@@ -1,0 +1,2 @@
+segment start frame: 1770
+segment end frame: 6960

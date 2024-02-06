@@ -1,0 +1,2 @@
+segment start frame: 2250
+segrement end frame: 10650
