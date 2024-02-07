@@ -1,4 +1,754 @@
 ,label
+0,Stable
+1,Stable
+2,Stable
+3,Stable
+4,Stable
+5,Stable
+6,Stable
+7,Stable
+8,Stable
+9,Stable
+10,Stable
+11,Stable
+12,Stable
+13,Stable
+14,Stable
+15,Stable
+16,Stable
+17,Stable
+18,Stable
+19,Stable
+20,Stable
+21,Stable
+22,Stable
+23,Stable
+24,Stable
+25,Stable
+26,Stable
+27,Stable
+28,Stable
+29,Stable
+30,Stable
+31,Stable
+32,Stable
+33,Stable
+34,Stable
+35,Stable
+36,Stable
+37,Stable
+38,Stable
+39,Stable
+40,Stable
+41,Stable
+42,Stable
+43,Stable
+44,Stable
+45,Stable
+46,Stable
+47,Stable
+48,Stable
+49,Stable
+50,Stable
+51,Stable
+52,Stable
+53,Stable
+54,Stable
+55,Stable
+56,Stable
+57,Stable
+58,Stable
+59,Stable
+60,Stable
+61,Stable
+62,Stable
+63,Stable
+64,Stable
+65,Stable
+66,Stable
+67,Stable
+68,Stable
+69,Stable
+70,Stable
+71,Stable
+72,Stable
+73,Stable
+74,Stable
+75,Stable
+76,Stable
+77,Stable
+78,Stable
+79,Stable
+80,Stable
+81,Stable
+82,Stable
+83,Stable
+84,Stable
+85,Stable
+86,Stable
+87,Stable
+88,Stable
+89,Stable
+90,Stable
+91,Stable
+92,Stable
+93,Stable
+94,Stable
+95,Stable
+96,Stable
+97,Stable
+98,Stable
+99,Stable
+100,Stable
+101,Stable
+102,Stable
+103,Stable
+104,Stable
+105,Stable
+106,Stable
+107,Stable
+108,Stable
+109,Stable
+110,Stable
+111,Stable
+112,Stable
+113,Stable
+114,Stable
+115,Stable
+116,Stable
+117,Stable
+118,Stable
+119,Stable
+120,Stable
+121,Stable
+122,Stable
+123,Stable
+124,Stable
+125,Stable
+126,Stable
+127,Stable
+128,Stable
+129,Stable
+130,Stable
+131,Stable
+132,Stable
+133,Stable
+134,Stable
+135,Stable
+136,Stable
+137,Stable
+138,Stable
+139,Stable
+140,Stable
+141,Stable
+142,Stable
+143,Stable
+144,Stable
+145,Stable
+146,Stable
+147,Stable
+148,Stable
+149,Stable
+150,Stable
+151,Stable
+152,Stable
+153,Stable
+154,Stable
+155,Stable
+156,Stable
+157,Stable
+158,Stable
+159,Stable
+160,Stable
+161,Stable
+162,Stable
+163,Stable
+164,Stable
+165,Stable
+166,Stable
+167,Stable
+168,Stable
+169,Stable
+170,Stable
+171,Stable
+172,Stable
+173,Stable
+174,Stable
+175,Stable
+176,Stable
+177,Stable
+178,Stable
+179,Stable
+180,Stable
+181,Stable
+182,Stable
+183,Stable
+184,Stable
+185,Stable
+186,Stable
+187,Stable
+188,Stable
+189,Stable
+190,Stable
+191,Stable
+192,Stable
+193,Stable
+194,Stable
+195,Stable
+196,Stable
+197,Stable
+198,Stable
+199,Stable
+200,Stable
+201,Stable
+202,Stable
+203,Stable
+204,Stable
+205,Stable
+206,Stable
+207,Stable
+208,Stable
+209,Stable
+210,Stable
+211,Stable
+212,Stable
+213,Stable
+214,Stable
+215,Stable
+216,Stable
+217,Stable
+218,Stable
+219,Stable
+220,Stable
+221,Stable
+222,Stable
+223,Stable
+224,Stable
+225,Stable
+226,Stable
+227,Stable
+228,Stable
+229,Stable
+230,Stable
+231,Stable
+232,Stable
+233,Stable
+234,Stable
+235,Stable
+236,Stable
+237,Stable
+238,Stable
+239,Stable
+240,Stable
+241,Stable
+242,Stable
+243,Stable
+244,Stable
+245,Stable
+246,Stable
+247,Stable
+248,Stable
+249,Stable
+250,Stable
+251,Stable
+252,Stable
+253,Stable
+254,Stable
+255,Stable
+256,Stable
+257,Stable
+258,Stable
+259,Stable
+260,Stable
+261,Stable
+262,Stable
+263,Stable
+264,Stable
+265,Stable
+266,Stable
+267,Stable
+268,Stable
+269,Stable
+270,Stable
+271,Stable
+272,Stable
+273,Stable
+274,Stable
+275,Stable
+276,Stable
+277,Stable
+278,Stable
+279,Stable
+280,Stable
+281,Stable
+282,Stable
+283,Stable
+284,Stable
+285,Stable
+286,Stable
+287,Stable
+288,Stable
+289,Stable
+290,Stable
+291,Stable
+292,Stable
+293,Stable
+294,Stable
+295,Stable
+296,Stable
+297,Stable
+298,Stable
+299,Stable
+300,Stable
+301,Stable
+302,Stable
+303,Stable
+304,Stable
+305,Stable
+306,Stable
+307,Stable
+308,Stable
+309,Stable
+310,Stable
+311,Stable
+312,Stable
+313,Stable
+314,Stable
+315,Stable
+316,Stable
+317,Stable
+318,Stable
+319,Stable
+320,Stable
+321,Stable
+322,Stable
+323,Stable
+324,Stable
+325,Stable
+326,Stable
+327,Stable
+328,Stable
+329,Stable
+330,Stable
+331,Stable
+332,Stable
+333,Stable
+334,Stable
+335,Stable
+336,Stable
+337,Stable
+338,Stable
+339,Stable
+340,Stable
+341,Stable
+342,Stable
+343,Stable
+344,Stable
+345,Stable
+346,Stable
+347,Stable
+348,Stable
+349,Stable
+350,Stable
+351,Stable
+352,Stable
+353,Stable
+354,Stable
+355,Stable
+356,Stable
+357,Stable
+358,Stable
+359,Stable
+360,Stable
+361,Stable
+362,Stable
+363,Stable
+364,Stable
+365,Stable
+366,Stable
+367,Stable
+368,Stable
+369,Stable
+370,Stable
+371,Stable
+372,Stable
+373,Stable
+374,Stable
+375,Stable
+376,Stable
+377,Stable
+378,Stable
+379,Stable
+380,Stable
+381,Stable
+382,Stable
+383,Stable
+384,Stable
+385,Stable
+386,Stable
+387,Stable
+388,Stable
+389,Stable
+390,Stable
+391,Stable
+392,Stable
+393,Stable
+394,Stable
+395,Stable
+396,Stable
+397,Stable
+398,Stable
+399,Stable
+400,Stable
+401,Stable
+402,Stable
+403,Stable
+404,Stable
+405,Stable
+406,Stable
+407,Stable
+408,Stable
+409,Stable
+410,Stable
+411,Stable
+412,Stable
+413,Stable
+414,Stable
+415,Stable
+416,Stable
+417,Stable
+418,Stable
+419,Stable
+420,Stable
+421,Stable
+422,Stable
+423,Stable
+424,Stable
+425,Stable
+426,Stable
+427,Stable
+428,Stable
+429,Stable
+430,Stable
+431,Stable
+432,Stable
+433,Stable
+434,Stable
+435,Stable
+436,Stable
+437,Stable
+438,Stable
+439,Stable
+440,Stable
+441,Stable
+442,Stable
+443,Stable
+444,Stable
+445,Stable
+446,Stable
+447,Stable
+448,Stable
+449,Stable
+450,Stable
+451,Stable
+452,Stable
+453,Stable
+454,Stable
+455,Stable
+456,Stable
+457,Stable
+458,Stable
+459,Stable
+460,Stable
+461,Stable
+462,Stable
+463,Stable
+464,Stable
+465,Stable
+466,Stable
+467,Stable
+468,Stable
+469,Stable
+470,Stable
+471,Stable
+472,Stable
+473,Stable
+474,Stable
+475,Stable
+476,Stable
+477,Stable
+478,Stable
+479,Stable
+480,Stable
+481,Stable
+482,Stable
+483,Stable
+484,Stable
+485,Stable
+486,Stable
+487,Stable
+488,Stable
+489,Stable
+490,Stable
+491,Stable
+492,Stable
+493,Stable
+494,Stable
+495,Stable
+496,Stable
+497,Stable
+498,Stable
+499,Stable
+500,Stable
+501,Stable
+502,Stable
+503,Stable
+504,Stable
+505,Stable
+506,Stable
+507,Stable
+508,Stable
+509,Stable
+510,Stable
+511,Stable
+512,Stable
+513,Stable
+514,Stable
+515,Stable
+516,Stable
+517,Stable
+518,Stable
+519,Stable
+520,Stable
+521,Stable
+522,Stable
+523,Stable
+524,Stable
+525,Stable
+526,Stable
+527,Stable
+528,Stable
+529,Stable
+530,Stable
+531,Stable
+532,Stable
+533,Stable
+534,Stable
+535,Stable
+536,Stable
+537,Stable
+538,Stable
+539,Stable
+540,Stable
+541,Stable
+542,Stable
+543,Stable
+544,Stable
+545,Stable
+546,Stable
+547,Stable
+548,Stable
+549,Stable
+550,Stable
+551,Stable
+552,Stable
+553,Stable
+554,Stable
+555,Stable
+556,Stable
+557,Stable
+558,Stable
+559,Stable
+560,Stable
+561,Stable
+562,Stable
+563,Stable
+564,Stable
+565,Stable
+566,Stable
+567,Stable
+568,Stable
+569,Stable
+570,Stable
+571,Stable
+572,Stable
+573,Stable
+574,Stable
+575,Stable
+576,Stable
+577,Stable
+578,Stable
+579,Stable
+580,Stable
+581,Stable
+582,Stable
+583,Stable
+584,Stable
+585,Stable
+586,Stable
+587,Stable
+588,Stable
+589,Stable
+590,Stable
+591,Stable
+592,Stable
+593,Stable
+594,Stable
+595,Stable
+596,Stable
+597,Stable
+598,Stable
+599,Stable
+600,Stable
+601,Stable
+602,Stable
+603,Stable
+604,Stable
+605,Stable
+606,Stable
+607,Stable
+608,Stable
+609,Stable
+610,Stable
+611,Stable
+612,Stable
+613,Stable
+614,Stable
+615,Stable
+616,Stable
+617,Stable
+618,Stable
+619,Stable
+620,Stable
+621,Stable
+622,Stable
+623,Stable
+624,Stable
+625,Stable
+626,Stable
+627,Stable
+628,Stable
+629,Stable
+630,Stable
+631,Stable
+632,Stable
+633,Stable
+634,Stable
+635,Stable
+636,Stable
+637,Stable
+638,Stable
+639,Stable
+640,Stable
+641,Stable
+642,Stable
+643,Stable
+644,Stable
+645,Stable
+646,Stable
+647,Stable
+648,Stable
+649,Stable
+650,Stable
+651,Stable
+652,Stable
+653,Stable
+654,Stable
+655,Stable
+656,Stable
+657,Stable
+658,Stable
+659,Stable
+660,Stable
+661,Stable
+662,Stable
+663,Stable
+664,Stable
+665,Stable
+666,Stable
+667,Stable
+668,Stable
+669,Stable
+670,Stable
+671,Stable
+672,Stable
+673,Stable
+674,Stable
+675,Stable
+676,Stable
+677,Stable
+678,Stable
+679,Stable
+680,Stable
+681,Stable
+682,Stable
+683,Stable
+684,Stable
+685,Stable
+686,Stable
+687,Stable
+688,Stable
+689,Stable
+690,Stable
+691,Stable
+692,Stable
+693,Stable
+694,Stable
+695,Stable
+696,Stable
+697,Stable
+698,Stable
+699,Stable
+700,Stable
+701,Stable
+702,Stable
+703,Stable
+704,Stable
+705,Stable
+706,Stable
+707,Stable
+708,Stable
+709,Stable
+710,Stable
+711,Stable
+712,Stable
+713,Stable
+714,Stable
+715,Stable
+716,Stable
+717,Stable
+718,Stable
+719,Stable
+720,Stable
+721,Stable
+722,Stable
+723,Stable
+724,Stable
+725,Stable
+726,Stable
+727,Stable
+728,Stable
+729,Stable
+730,Stable
+731,Stable
+732,Stable
+733,Stable
+734,Stable
+735,Stable
+736,Stable
+737,Stable
+738,Stable
+739,Stable
+740,Stable
+741,Stable
+742,Stable
+743,Stable
+744,Stable
+745,Stable
+746,Stable
+747,Stable
+748,Stable
+749,Stable
 750,Stable
 751,Stable
 752,Stable
@@ -521,45 +1271,45 @@
 1269,Stable
 1270,Stable
 1271,Stable
-1272,Minimum Sway
-1273,Minimum Sway
-1274,Minimum Sway
-1275,Minimum Sway
-1276,Minimum Sway
-1277,Minimum Sway
-1278,Minimum Sway
-1279,Minimum Sway
-1280,Minimum Sway
-1281,Minimum Sway
-1282,Minimum Sway
-1283,Minimum Sway
-1284,Minimum Sway
-1285,Minimum Sway
-1286,Minimum Sway
-1287,Minimum Sway
-1288,Minimum Sway
-1289,Minimum Sway
-1290,Minimum Sway
-1291,Minimum Sway
-1292,Minimum Sway
-1293,Minimum Sway
-1294,Minimum Sway
-1295,Minimum Sway
-1296,Minimum Sway
-1297,Minimum Sway
-1298,Minimum Sway
-1299,Minimum Sway
-1300,Minimum Sway
-1301,Minimum Sway
-1302,Minimum Sway
-1303,Minimum Sway
-1304,Minimum Sway
-1305,Minimum Sway
-1306,Minimum Sway
-1307,Minimum Sway
-1308,Minimum Sway
-1309,Minimum Sway
-1310,Minimum Sway
+1272,Stable
+1273,Stable
+1274,Stable
+1275,Stable
+1276,Stable
+1277,Stable
+1278,Stable
+1279,Stable
+1280,Stable
+1281,Stable
+1282,Stable
+1283,Stable
+1284,Stable
+1285,Stable
+1286,Stable
+1287,Stable
+1288,Stable
+1289,Stable
+1290,Stable
+1291,Stable
+1292,Stable
+1293,Stable
+1294,Stable
+1295,Stable
+1296,Stable
+1297,Stable
+1298,Stable
+1299,Stable
+1300,Stable
+1301,Stable
+1302,Stable
+1303,Stable
+1304,Stable
+1305,Stable
+1306,Stable
+1307,Stable
+1308,Stable
+1309,Stable
+1310,Stable
 1311,Stable
 1312,Stable
 1313,Stable
@@ -4274,233 +5024,233 @@
 5022,Stable
 5023,Stable
 5024,Stable
-5025,Stable
-5026,Stable
-5027,Stable
-5028,Stable
-5029,Stable
-5030,Stable
-5031,Stable
-5032,Stable
-5033,Stable
-5034,Stable
-5035,Stable
-5036,Stable
-5037,Stable
-5038,Stable
-5039,Stable
-5040,Stable
-5041,Stable
-5042,Stable
-5043,Stable
-5044,Stable
-5045,Stable
-5046,Stable
-5047,Stable
-5048,Stable
-5049,Stable
-5050,Stable
-5051,Stable
-5052,Stable
-5053,Stable
-5054,Stable
-5055,Stable
-5056,Stable
-5057,Stable
-5058,Stable
-5059,Stable
-5060,Stable
-5061,Stable
-5062,Stable
-5063,Stable
-5064,Stable
-5065,Stable
-5066,Stable
-5067,Stable
-5068,Stable
-5069,Stable
-5070,Stable
-5071,Stable
-5072,Stable
-5073,Stable
-5074,Stable
-5075,Stable
-5076,Stable
-5077,Stable
-5078,Stable
-5079,Stable
-5080,Stable
-5081,Stable
-5082,Stable
-5083,Stable
-5084,Stable
-5085,Stable
-5086,Stable
-5087,Stable
-5088,Stable
-5089,Stable
-5090,Stable
-5091,Stable
-5092,Stable
-5093,Stable
-5094,Stable
-5095,Stable
-5096,Stable
-5097,Stable
-5098,Stable
-5099,Stable
-5100,Stable
-5101,Stable
-5102,Stable
-5103,Stable
-5104,Stable
-5105,Stable
-5106,Stable
-5107,Stable
-5108,Stable
-5109,Stable
-5110,Stable
-5111,Stable
-5112,Stable
-5113,Stable
-5114,Stable
-5115,Stable
-5116,Stable
-5117,Stable
-5118,Stable
-5119,Stable
-5120,Stable
-5121,Stable
-5122,Stable
-5123,Stable
-5124,Stable
-5125,Stable
-5126,Stable
-5127,Stable
-5128,Stable
-5129,Stable
-5130,Stable
-5131,Stable
-5132,Stable
-5133,Stable
-5134,Stable
-5135,Stable
-5136,Stable
-5137,Stable
-5138,Stable
-5139,Stable
-5140,Stable
-5141,Stable
-5142,Stable
-5143,Stable
-5144,Stable
-5145,Stable
-5146,Stable
-5147,Stable
-5148,Stable
-5149,Stable
-5150,Stable
-5151,Stable
-5152,Stable
-5153,Stable
-5154,Stable
-5155,Stable
-5156,Stable
-5157,Stable
-5158,Stable
-5159,Stable
-5160,Stable
-5161,Stable
-5162,Stable
-5163,Stable
-5164,Stable
-5165,Stable
-5166,Stable
-5167,Stable
-5168,Stable
-5169,Stable
-5170,Stable
-5171,Stable
-5172,Stable
-5173,Stable
-5174,Stable
-5175,Stable
-5176,Stable
-5177,Stable
-5178,Stable
-5179,Stable
-5180,Stable
-5181,Stable
-5182,Stable
-5183,Stable
-5184,Stable
-5185,Stable
-5186,Stable
-5187,Stable
-5188,Stable
-5189,Stable
-5190,Stable
-5191,Stable
-5192,Stable
-5193,Stable
-5194,Stable
-5195,Stable
-5196,Stable
-5197,Stable
-5198,Stable
-5199,Stable
-5200,Stable
-5201,Stable
-5202,Stable
-5203,Stable
-5204,Stable
-5205,Stable
-5206,Stable
-5207,Stable
-5208,Stable
-5209,Stable
-5210,Stable
-5211,Stable
-5212,Stable
-5213,Stable
-5214,Stable
-5215,Stable
-5216,Stable
-5217,Stable
-5218,Stable
-5219,Stable
-5220,Stable
-5221,Stable
-5222,Stable
-5223,Stable
-5224,Stable
-5225,Stable
-5226,Stable
-5227,Stable
-5228,Stable
-5229,Stable
-5230,Stable
-5231,Stable
-5232,Stable
-5233,Stable
-5234,Stable
-5235,Stable
-5236,Stable
-5237,Stable
-5238,Stable
-5239,Stable
-5240,Stable
-5241,Stable
-5242,Stable
-5243,Stable
-5244,Stable
-5245,Stable
-5246,Stable
-5247,Stable
-5248,Stable
-5249,Stable
-5250,Stable
-5251,Stable
+5025,Minimum Sway
+5026,Minimum Sway
+5027,Minimum Sway
+5028,Minimum Sway
+5029,Minimum Sway
+5030,Minimum Sway
+5031,Minimum Sway
+5032,Minimum Sway
+5033,Minimum Sway
+5034,Minimum Sway
+5035,Minimum Sway
+5036,Minimum Sway
+5037,Minimum Sway
+5038,Minimum Sway
+5039,Minimum Sway
+5040,Minimum Sway
+5041,Minimum Sway
+5042,Minimum Sway
+5043,Minimum Sway
+5044,Minimum Sway
+5045,Minimum Sway
+5046,Minimum Sway
+5047,Minimum Sway
+5048,Minimum Sway
+5049,Minimum Sway
+5050,Minimum Sway
+5051,Minimum Sway
+5052,Minimum Sway
+5053,Minimum Sway
+5054,Minimum Sway
+5055,Minimum Sway
+5056,Minimum Sway
+5057,Minimum Sway
+5058,Minimum Sway
+5059,Minimum Sway
+5060,Minimum Sway
+5061,Minimum Sway
+5062,Minimum Sway
+5063,Minimum Sway
+5064,Minimum Sway
+5065,Minimum Sway
+5066,Minimum Sway
+5067,Minimum Sway
+5068,Minimum Sway
+5069,Minimum Sway
+5070,Minimum Sway
+5071,Minimum Sway
+5072,Minimum Sway
+5073,Minimum Sway
+5074,Minimum Sway
+5075,Minimum Sway
+5076,Minimum Sway
+5077,Minimum Sway
+5078,Minimum Sway
+5079,Minimum Sway
+5080,Minimum Sway
+5081,Minimum Sway
+5082,Minimum Sway
+5083,Minimum Sway
+5084,Minimum Sway
+5085,Minimum Sway
+5086,Minimum Sway
+5087,Minimum Sway
+5088,Minimum Sway
+5089,Minimum Sway
+5090,Minimum Sway
+5091,Minimum Sway
+5092,Minimum Sway
+5093,Minimum Sway
+5094,Minimum Sway
+5095,Minimum Sway
+5096,Minimum Sway
+5097,Minimum Sway
+5098,Minimum Sway
+5099,Minimum Sway
+5100,Minimum Sway
+5101,Minimum Sway
+5102,Minimum Sway
+5103,Minimum Sway
+5104,Minimum Sway
+5105,Minimum Sway
+5106,Minimum Sway
+5107,Minimum Sway
+5108,Minimum Sway
+5109,Minimum Sway
+5110,Minimum Sway
+5111,Minimum Sway
+5112,Minimum Sway
+5113,Minimum Sway
+5114,Minimum Sway
+5115,Minimum Sway
+5116,Minimum Sway
+5117,Minimum Sway
+5118,Minimum Sway
+5119,Minimum Sway
+5120,Minimum Sway
+5121,Minimum Sway
+5122,Minimum Sway
+5123,Minimum Sway
+5124,Minimum Sway
+5125,Minimum Sway
+5126,Minimum Sway
+5127,Minimum Sway
+5128,Minimum Sway
+5129,Minimum Sway
+5130,Minimum Sway
+5131,Minimum Sway
+5132,Minimum Sway
+5133,Minimum Sway
+5134,Minimum Sway
+5135,Minimum Sway
+5136,Minimum Sway
+5137,Minimum Sway
+5138,Minimum Sway
+5139,Minimum Sway
+5140,Minimum Sway
+5141,Minimum Sway
+5142,Minimum Sway
+5143,Minimum Sway
+5144,Minimum Sway
+5145,Minimum Sway
+5146,Minimum Sway
+5147,Minimum Sway
+5148,Minimum Sway
+5149,Minimum Sway
+5150,Minimum Sway
+5151,Minimum Sway
+5152,Minimum Sway
+5153,Minimum Sway
+5154,Minimum Sway
+5155,Minimum Sway
+5156,Minimum Sway
+5157,Minimum Sway
+5158,Minimum Sway
+5159,Minimum Sway
+5160,Minimum Sway
+5161,Minimum Sway
+5162,Minimum Sway
+5163,Minimum Sway
+5164,Minimum Sway
+5165,Minimum Sway
+5166,Minimum Sway
+5167,Minimum Sway
+5168,Minimum Sway
+5169,Minimum Sway
+5170,Minimum Sway
+5171,Minimum Sway
+5172,Minimum Sway
+5173,Minimum Sway
+5174,Minimum Sway
+5175,Minimum Sway
+5176,Minimum Sway
+5177,Minimum Sway
+5178,Minimum Sway
+5179,Minimum Sway
+5180,Minimum Sway
+5181,Minimum Sway
+5182,Minimum Sway
+5183,Minimum Sway
+5184,Minimum Sway
+5185,Minimum Sway
+5186,Minimum Sway
+5187,Minimum Sway
+5188,Minimum Sway
+5189,Minimum Sway
+5190,Minimum Sway
+5191,Minimum Sway
+5192,Minimum Sway
+5193,Minimum Sway
+5194,Minimum Sway
+5195,Minimum Sway
+5196,Minimum Sway
+5197,Minimum Sway
+5198,Minimum Sway
+5199,Minimum Sway
+5200,Minimum Sway
+5201,Minimum Sway
+5202,Minimum Sway
+5203,Minimum Sway
+5204,Minimum Sway
+5205,Minimum Sway
+5206,Minimum Sway
+5207,Minimum Sway
+5208,Minimum Sway
+5209,Minimum Sway
+5210,Minimum Sway
+5211,Minimum Sway
+5212,Minimum Sway
+5213,Minimum Sway
+5214,Minimum Sway
+5215,Minimum Sway
+5216,Minimum Sway
+5217,Minimum Sway
+5218,Minimum Sway
+5219,Minimum Sway
+5220,Minimum Sway
+5221,Minimum Sway
+5222,Minimum Sway
+5223,Minimum Sway
+5224,Minimum Sway
+5225,Minimum Sway
+5226,Minimum Sway
+5227,Minimum Sway
+5228,Minimum Sway
+5229,Minimum Sway
+5230,Minimum Sway
+5231,Minimum Sway
+5232,Minimum Sway
+5233,Minimum Sway
+5234,Minimum Sway
+5235,Minimum Sway
+5236,Minimum Sway
+5237,Minimum Sway
+5238,Minimum Sway
+5239,Minimum Sway
+5240,Minimum Sway
+5241,Minimum Sway
+5242,Minimum Sway
+5243,Minimum Sway
+5244,Minimum Sway
+5245,Minimum Sway
+5246,Minimum Sway
+5247,Minimum Sway
+5248,Minimum Sway
+5249,Minimum Sway
+5250,Minimum Sway
+5251,Minimum Sway
 5252,Stable
 5253,Stable
 5254,Stable
@@ -6519,70 +7269,70 @@
 7267,Stable
 7268,Stable
 7269,Stable
-7270,Minimum Sway
-7271,Minimum Sway
-7272,Minimum Sway
-7273,Minimum Sway
-7274,Minimum Sway
-7275,Minimum Sway
-7276,Minimum Sway
-7277,Minimum Sway
-7278,Minimum Sway
-7279,Minimum Sway
-7280,Minimum Sway
-7281,Minimum Sway
-7282,Minimum Sway
-7283,Minimum Sway
-7284,Minimum Sway
-7285,Minimum Sway
-7286,Minimum Sway
-7287,Minimum Sway
-7288,Minimum Sway
-7289,Minimum Sway
-7290,Minimum Sway
-7291,Minimum Sway
-7292,Minimum Sway
-7293,Minimum Sway
-7294,Minimum Sway
-7295,Minimum Sway
-7296,Minimum Sway
-7297,Minimum Sway
-7298,Minimum Sway
-7299,Minimum Sway
-7300,Minimum Sway
-7301,Minimum Sway
-7302,Minimum Sway
-7303,Minimum Sway
-7304,Minimum Sway
-7305,Minimum Sway
-7306,Minimum Sway
-7307,Minimum Sway
-7308,Minimum Sway
-7309,Minimum Sway
-7310,Minimum Sway
-7311,Minimum Sway
-7312,Minimum Sway
-7313,Minimum Sway
-7314,Minimum Sway
-7315,Minimum Sway
-7316,Minimum Sway
-7317,Minimum Sway
-7318,Minimum Sway
-7319,Minimum Sway
-7320,Minimum Sway
-7321,Minimum Sway
-7322,Minimum Sway
-7323,Minimum Sway
-7324,Minimum Sway
-7325,Minimum Sway
-7326,Minimum Sway
-7327,Minimum Sway
-7328,Minimum Sway
-7329,Minimum Sway
-7330,Minimum Sway
-7331,Minimum Sway
-7332,Minimum Sway
-7333,Minimum Sway
+7270,Stable
+7271,Stable
+7272,Stable
+7273,Stable
+7274,Stable
+7275,Stable
+7276,Stable
+7277,Stable
+7278,Stable
+7279,Stable
+7280,Stable
+7281,Stable
+7282,Stable
+7283,Stable
+7284,Stable
+7285,Stable
+7286,Stable
+7287,Stable
+7288,Stable
+7289,Stable
+7290,Stable
+7291,Stable
+7292,Stable
+7293,Stable
+7294,Stable
+7295,Stable
+7296,Stable
+7297,Stable
+7298,Stable
+7299,Stable
+7300,Stable
+7301,Stable
+7302,Stable
+7303,Stable
+7304,Stable
+7305,Stable
+7306,Stable
+7307,Stable
+7308,Stable
+7309,Stable
+7310,Stable
+7311,Stable
+7312,Stable
+7313,Stable
+7314,Stable
+7315,Stable
+7316,Stable
+7317,Stable
+7318,Stable
+7319,Stable
+7320,Stable
+7321,Stable
+7322,Stable
+7323,Stable
+7324,Stable
+7325,Stable
+7326,Stable
+7327,Stable
+7328,Stable
+7329,Stable
+7330,Stable
+7331,Stable
+7332,Stable
+7333,Stable
 7334,Stable
 7335,Stable
 7336,Stable
@@ -7463,42 +8213,42 @@
 8211,Stable
 8212,Stable
 8213,Stable
-8214,Minimum Sway
-8215,Minimum Sway
-8216,Minimum Sway
-8217,Minimum Sway
-8218,Minimum Sway
-8219,Minimum Sway
-8220,Minimum Sway
-8221,Minimum Sway
-8222,Minimum Sway
-8223,Minimum Sway
-8224,Minimum Sway
-8225,Minimum Sway
-8226,Minimum Sway
-8227,Minimum Sway
-8228,Minimum Sway
-8229,Minimum Sway
-8230,Minimum Sway
-8231,Minimum Sway
-8232,Minimum Sway
-8233,Minimum Sway
-8234,Minimum Sway
-8235,Minimum Sway
-8236,Minimum Sway
-8237,Minimum Sway
-8238,Minimum Sway
-8239,Minimum Sway
-8240,Minimum Sway
-8241,Minimum Sway
-8242,Minimum Sway
-8243,Minimum Sway
-8244,Minimum Sway
-8245,Minimum Sway
-8246,Minimum Sway
-8247,Minimum Sway
-8248,Minimum Sway
-8249,Minimum Sway
+8214,Stable
+8215,Stable
+8216,Stable
+8217,Stable
+8218,Stable
+8219,Stable
+8220,Stable
+8221,Stable
+8222,Stable
+8223,Stable
+8224,Stable
+8225,Stable
+8226,Stable
+8227,Stable
+8228,Stable
+8229,Stable
+8230,Stable
+8231,Stable
+8232,Stable
+8233,Stable
+8234,Stable
+8235,Stable
+8236,Stable
+8237,Stable
+8238,Stable
+8239,Stable
+8240,Stable
+8241,Stable
+8242,Stable
+8243,Stable
+8244,Stable
+8245,Stable
+8246,Stable
+8247,Stable
+8248,Stable
+8249,Stable
 8250,Stable
 8251,Stable
 8252,Stable
@@ -7541,34 +8291,34 @@
 8289,Stable
 8290,Stable
 8291,Stable
-8292,Minimum Sway
-8293,Minimum Sway
-8294,Minimum Sway
-8295,Minimum Sway
-8296,Minimum Sway
-8297,Minimum Sway
-8298,Minimum Sway
-8299,Minimum Sway
-8300,Minimum Sway
-8301,Minimum Sway
-8302,Minimum Sway
-8303,Minimum Sway
-8304,Minimum Sway
-8305,Minimum Sway
-8306,Minimum Sway
-8307,Minimum Sway
-8308,Minimum Sway
-8309,Minimum Sway
-8310,Minimum Sway
-8311,Minimum Sway
-8312,Minimum Sway
-8313,Minimum Sway
-8314,Minimum Sway
-8315,Minimum Sway
-8316,Minimum Sway
-8317,Minimum Sway
-8318,Minimum Sway
-8319,Minimum Sway
+8292,Stable
+8293,Stable
+8294,Stable
+8295,Stable
+8296,Stable
+8297,Stable
+8298,Stable
+8299,Stable
+8300,Stable
+8301,Stable
+8302,Stable
+8303,Stable
+8304,Stable
+8305,Stable
+8306,Stable
+8307,Stable
+8308,Stable
+8309,Stable
+8310,Stable
+8311,Stable
+8312,Stable
+8313,Stable
+8314,Stable
+8315,Stable
+8316,Stable
+8317,Stable
+8318,Stable
+8319,Stable
 8320,Stable
 8321,Stable
 8322,Stable
@@ -7834,81 +8584,81 @@
 8582,Stable
 8583,Stable
 8584,Stable
-8585,Stable
-8586,Stable
-8587,Stable
-8588,Stable
-8589,Stable
-8590,Stable
-8591,Stable
-8592,Stable
-8593,Stable
-8594,Stable
-8595,Stable
-8596,Stable
-8597,Stable
-8598,Stable
-8599,Stable
-8600,Stable
-8601,Stable
-8602,Stable
-8603,Stable
-8604,Stable
-8605,Stable
-8606,Stable
-8607,Stable
-8608,Stable
-8609,Stable
-8610,Stable
-8611,Stable
-8612,Stable
-8613,Stable
-8614,Stable
-8615,Stable
-8616,Stable
-8617,Stable
-8618,Stable
-8619,Stable
-8620,Stable
-8621,Stable
-8622,Stable
-8623,Stable
-8624,Stable
-8625,Stable
-8626,Stable
-8627,Stable
-8628,Stable
-8629,Stable
-8630,Stable
-8631,Stable
-8632,Stable
-8633,Stable
-8634,Stable
-8635,Stable
-8636,Stable
-8637,Stable
-8638,Stable
-8639,Stable
-8640,Stable
-8641,Stable
-8642,Stable
-8643,Stable
-8644,Stable
-8645,Stable
-8646,Stable
-8647,Stable
-8648,Stable
-8649,Stable
-8650,Stable
-8651,Stable
-8652,Stable
-8653,Stable
-8654,Stable
-8655,Stable
-8656,Stable
-8657,Stable
-8658,Stable
-8659,Stable
+8585,Minimum Sway
+8586,Minimum Sway
+8587,Minimum Sway
+8588,Minimum Sway
+8589,Minimum Sway
+8590,Minimum Sway
+8591,Minimum Sway
+8592,Minimum Sway
+8593,Minimum Sway
+8594,Minimum Sway
+8595,Minimum Sway
+8596,Minimum Sway
+8597,Minimum Sway
+8598,Minimum Sway
+8599,Minimum Sway
+8600,Minimum Sway
+8601,Minimum Sway
+8602,Minimum Sway
+8603,Minimum Sway
+8604,Minimum Sway
+8605,Minimum Sway
+8606,Minimum Sway
+8607,Minimum Sway
+8608,Minimum Sway
+8609,Minimum Sway
+8610,Minimum Sway
+8611,Minimum Sway
+8612,Minimum Sway
+8613,Minimum Sway
+8614,Minimum Sway
+8615,Minimum Sway
+8616,Minimum Sway
+8617,Minimum Sway
+8618,Minimum Sway
+8619,Minimum Sway
+8620,Minimum Sway
+8621,Minimum Sway
+8622,Minimum Sway
+8623,Minimum Sway
+8624,Minimum Sway
+8625,Minimum Sway
+8626,Minimum Sway
+8627,Minimum Sway
+8628,Minimum Sway
+8629,Minimum Sway
+8630,Minimum Sway
+8631,Minimum Sway
+8632,Minimum Sway
+8633,Minimum Sway
+8634,Minimum Sway
+8635,Minimum Sway
+8636,Minimum Sway
+8637,Minimum Sway
+8638,Minimum Sway
+8639,Minimum Sway
+8640,Minimum Sway
+8641,Minimum Sway
+8642,Minimum Sway
+8643,Minimum Sway
+8644,Minimum Sway
+8645,Minimum Sway
+8646,Minimum Sway
+8647,Minimum Sway
+8648,Minimum Sway
+8649,Minimum Sway
+8650,Minimum Sway
+8651,Minimum Sway
+8652,Minimum Sway
+8653,Minimum Sway
+8654,Minimum Sway
+8655,Minimum Sway
+8656,Minimum Sway
+8657,Minimum Sway
+8658,Minimum Sway
+8659,Minimum Sway
 8660,Stable
 8661,Stable
 8662,Stable
@@ -8258,1794 +9008,3 @@
 9006,Stable
 9007,Stable
 9008,Stable
-9009,Stable
-9010,Stable
-9011,Stable
-9012,Stable
-9013,Stable
-9014,Stable
-9015,Stable
-9016,Stable
-9017,Stable
-9018,Stable
-9019,Stable
-9020,Stable
-9021,Stable
-9022,Stable
-9023,Stable
-9024,Stable
-9025,Stable
-9026,Stable
-9027,Stable
-9028,Stable
-9029,Stable
-9030,Stable
-9031,Stable
-9032,Stable
-9033,Stable
-9034,Stable
-9035,Stable
-9036,Stable
-9037,Stable
-9038,Stable
-9039,Stable
-9040,Stable
-9041,Stable
-9042,Stable
-9043,Stable
-9044,Stable
-9045,Stable
-9046,Stable
-9047,Stable
-9048,Stable
-9049,Stable
-9050,Stable
-9051,Stable
-9052,Stable
-9053,Stable
-9054,Stable
-9055,Stable
-9056,Stable
-9057,Stable
-9058,Stable
-9059,Stable
-9060,Stable
-9061,Stable
-9062,Stable
-9063,Stable
-9064,Stable
-9065,Stable
-9066,Stable
-9067,Stable
-9068,Stable
-9069,Stable
-9070,Stable
-9071,Stable
-9072,Stable
-9073,Stable
-9074,Stable
-9075,Stable
-9076,Stable
-9077,Stable
-9078,Stable
-9079,Stable
-9080,Stable
-9081,Stable
-9082,Stable
-9083,Stable
-9084,Stable
-9085,Stable
-9086,Stable
-9087,Stable
-9088,Stable
-9089,Stable
-9090,Stable
-9091,Stable
-9092,Stable
-9093,Stable
-9094,Stable
-9095,Stable
-9096,Stable
-9097,Stable
-9098,Stable
-9099,Stable
-9100,Stable
-9101,Stable
-9102,Stable
-9103,Stable
-9104,Stable
-9105,Stable
-9106,Stable
-9107,Stable
-9108,Stable
-9109,Stable
-9110,Stable
-9111,Stable
-9112,Stable
-9113,Stable
-9114,Stable
-9115,Stable
-9116,Stable
-9117,Stable
-9118,Stable
-9119,Stable
-9120,Stable
-9121,Stable
-9122,Stable
-9123,Stable
-9124,Stable
-9125,Stable
-9126,Stable
-9127,Stable
-9128,Stable
-9129,Stable
-9130,Stable
-9131,Stable
-9132,Stable
-9133,Stable
-9134,Stable
-9135,Stable
-9136,Stable
-9137,Stable
-9138,Stable
-9139,Stable
-9140,Stable
-9141,Stable
-9142,Stable
-9143,Stable
-9144,Stable
-9145,Stable
-9146,Stable
-9147,Stable
-9148,Stable
-9149,Stable
-9150,Stable
-9151,Stable
-9152,Stable
-9153,Stable
-9154,Stable
-9155,Stable
-9156,Stable
-9157,Stable
-9158,Stable
-9159,Stable
-9160,Stable
-9161,Stable
-9162,Stable
-9163,Stable
-9164,Stable
-9165,Stable
-9166,Stable
-9167,Stable
-9168,Stable
-9169,Stable
-9170,Stable
-9171,Stable
-9172,Stable
-9173,Stable
-9174,Stable
-9175,Stable
-9176,Stable
-9177,Stable
-9178,Stable
-9179,Stable
-9180,Stable
-9181,Stable
-9182,Stable
-9183,Stable
-9184,Stable
-9185,Stable
-9186,Stable
-9187,Stable
-9188,Stable
-9189,Stable
-9190,Stable
-9191,Stable
-9192,Stable
-9193,Stable
-9194,Stable
-9195,Stable
-9196,Stable
-9197,Stable
-9198,Stable
-9199,Stable
-9200,Stable
-9201,Stable
-9202,Stable
-9203,Stable
-9204,Stable
-9205,Stable
-9206,Stable
-9207,Stable
-9208,Stable
-9209,Stable
-9210,Stable
-9211,Stable
-9212,Stable
-9213,Stable
-9214,Stable
-9215,Stable
-9216,Stable
-9217,Stable
-9218,Stable
-9219,Stable
-9220,Stable
-9221,Stable
-9222,Stable
-9223,Stable
-9224,Stable
-9225,Stable
-9226,Stable
-9227,Stable
-9228,Stable
-9229,Stable
-9230,Stable
-9231,Stable
-9232,Stable
-9233,Stable
-9234,Stable
-9235,Stable
-9236,Stable
-9237,Stable
-9238,Stable
-9239,Stable
-9240,Stable
-9241,Stable
-9242,Stable
-9243,Stable
-9244,Stable
-9245,Stable
-9246,Stable
-9247,Stable
-9248,Stable
-9249,Stable
-9250,Stable
-9251,Stable
-9252,Stable
-9253,Stable
-9254,Stable
-9255,Stable
-9256,Stable
-9257,Stable
-9258,Stable
-9259,Stable
-9260,Stable
-9261,Stable
-9262,Stable
-9263,Stable
-9264,Stable
-9265,Stable
-9266,Stable
-9267,Stable
-9268,Stable
-9269,Stable
-9270,Stable
-9271,Stable
-9272,Stable
-9273,Stable
-9274,Stable
-9275,Stable
-9276,Stable
-9277,Stable
-9278,Stable
-9279,Stable
-9280,Stable
-9281,Stable
-9282,Stable
-9283,Stable
-9284,Stable
-9285,Stable
-9286,Stable
-9287,Stable
-9288,Minimum Sway
-9289,Minimum Sway
-9290,Minimum Sway
-9291,Minimum Sway
-9292,Minimum Sway
-9293,Minimum Sway
-9294,Minimum Sway
-9295,Minimum Sway
-9296,Minimum Sway
-9297,Minimum Sway
-9298,Minimum Sway
-9299,Minimum Sway
-9300,Minimum Sway
-9301,Minimum Sway
-9302,Minimum Sway
-9303,Minimum Sway
-9304,Minimum Sway
-9305,Minimum Sway
-9306,Minimum Sway
-9307,Minimum Sway
-9308,Minimum Sway
-9309,Minimum Sway
-9310,Minimum Sway
-9311,Minimum Sway
-9312,Minimum Sway
-9313,Minimum Sway
-9314,Minimum Sway
-9315,Minimum Sway
-9316,Minimum Sway
-9317,Minimum Sway
-9318,Stable
-9319,Stable
-9320,Stable
-9321,Stable
-9322,Stable
-9323,Stable
-9324,Stable
-9325,Stable
-9326,Stable
-9327,Stable
-9328,Stable
-9329,Stable
-9330,Stable
-9331,Stable
-9332,Stable
-9333,Stable
-9334,Stable
-9335,Stable
-9336,Stable
-9337,Stable
-9338,Stable
-9339,Stable
-9340,Stable
-9341,Stable
-9342,Stable
-9343,Stable
-9344,Stable
-9345,Stable
-9346,Stable
-9347,Stable
-9348,Stable
-9349,Stable
-9350,Stable
-9351,Stable
-9352,Stable
-9353,Stable
-9354,Stable
-9355,Stable
-9356,Stable
-9357,Stable
-9358,Stable
-9359,Stable
-9360,Stable
-9361,Stable
-9362,Stable
-9363,Stable
-9364,Stable
-9365,Stable
-9366,Stable
-9367,Stable
-9368,Stable
-9369,Stable
-9370,Stable
-9371,Stable
-9372,Stable
-9373,Stable
-9374,Stable
-9375,Stable
-9376,Stable
-9377,Stable
-9378,Stable
-9379,Stable
-9380,Stable
-9381,Stable
-9382,Stable
-9383,Stable
-9384,Stable
-9385,Stable
-9386,Stable
-9387,Stable
-9388,Stable
-9389,Stable
-9390,Stable
-9391,Stable
-9392,Stable
-9393,Stable
-9394,Stable
-9395,Stable
-9396,Stable
-9397,Stable
-9398,Stable
-9399,Stable
-9400,Stable
-9401,Stable
-9402,Stable
-9403,Stable
-9404,Stable
-9405,Stable
-9406,Stable
-9407,Stable
-9408,Stable
-9409,Stable
-9410,Stable
-9411,Stable
-9412,Stable
-9413,Stable
-9414,Stable
-9415,Stable
-9416,Stable
-9417,Stable
-9418,Stable
-9419,Stable
-9420,Stable
-9421,Stable
-9422,Stable
-9423,Stable
-9424,Stable
-9425,Stable
-9426,Stable
-9427,Stable
-9428,Stable
-9429,Stable
-9430,Stable
-9431,Stable
-9432,Stable
-9433,Stable
-9434,Stable
-9435,Stable
-9436,Stable
-9437,Stable
-9438,Stable
-9439,Stable
-9440,Stable
-9441,Stable
-9442,Stable
-9443,Stable
-9444,Stable
-9445,Stable
-9446,Stable
-9447,Stable
-9448,Stable
-9449,Stable
-9450,Stable
-9451,Stable
-9452,Stable
-9453,Stable
-9454,Stable
-9455,Stable
-9456,Stable
-9457,Stable
-9458,Stable
-9459,Stable
-9460,Stable
-9461,Stable
-9462,Stable
-9463,Stable
-9464,Stable
-9465,Stable
-9466,Stable
-9467,Stable
-9468,Stable
-9469,Stable
-9470,Stable
-9471,Stable
-9472,Stable
-9473,Stable
-9474,Stable
-9475,Stable
-9476,Stable
-9477,Stable
-9478,Stable
-9479,Stable
-9480,Stable
-9481,Stable
-9482,Stable
-9483,Stable
-9484,Stable
-9485,Stable
-9486,Stable
-9487,Stable
-9488,Stable
-9489,Stable
-9490,Stable
-9491,Stable
-9492,Stable
-9493,Stable
-9494,Stable
-9495,Stable
-9496,Stable
-9497,Stable
-9498,Stable
-9499,Stable
-9500,Stable
-9501,Stable
-9502,Stable
-9503,Stable
-9504,Stable
-9505,Stable
-9506,Stable
-9507,Stable
-9508,Stable
-9509,Stable
-9510,Stable
-9511,Stable
-9512,Stable
-9513,Stable
-9514,Stable
-9515,Stable
-9516,Stable
-9517,Stable
-9518,Stable
-9519,Stable
-9520,Stable
-9521,Stable
-9522,Stable
-9523,Stable
-9524,Stable
-9525,Stable
-9526,Stable
-9527,Stable
-9528,Stable
-9529,Stable
-9530,Stable
-9531,Stable
-9532,Stable
-9533,Stable
-9534,Stable
-9535,Stable
-9536,Stable
-9537,Stable
-9538,Stable
-9539,Stable
-9540,Stable
-9541,Stable
-9542,Stable
-9543,Stable
-9544,Stable
-9545,Stable
-9546,Stable
-9547,Stable
-9548,Stable
-9549,Stable
-9550,Stable
-9551,Stable
-9552,Stable
-9553,Stable
-9554,Stable
-9555,Stable
-9556,Stable
-9557,Stable
-9558,Stable
-9559,Stable
-9560,Stable
-9561,Stable
-9562,Stable
-9563,Stable
-9564,Stable
-9565,Stable
-9566,Stable
-9567,Stable
-9568,Stable
-9569,Stable
-9570,Stable
-9571,Stable
-9572,Stable
-9573,Stable
-9574,Stable
-9575,Stable
-9576,Stable
-9577,Stable
-9578,Stable
-9579,Stable
-9580,Stable
-9581,Stable
-9582,Stable
-9583,Stable
-9584,Stable
-9585,Stable
-9586,Stable
-9587,Stable
-9588,Stable
-9589,Stable
-9590,Stable
-9591,Stable
-9592,Stable
-9593,Stable
-9594,Stable
-9595,Stable
-9596,Stable
-9597,Stable
-9598,Stable
-9599,Stable
-9600,Stable
-9601,Stable
-9602,Stable
-9603,Stable
-9604,Stable
-9605,Stable
-9606,Stable
-9607,Stable
-9608,Stable
-9609,Stable
-9610,Stable
-9611,Stable
-9612,Stable
-9613,Stable
-9614,Stable
-9615,Stable
-9616,Stable
-9617,Stable
-9618,Stable
-9619,Stable
-9620,Stable
-9621,Stable
-9622,Stable
-9623,Stable
-9624,Stable
-9625,Stable
-9626,Stable
-9627,Stable
-9628,Stable
-9629,Stable
-9630,Stable
-9631,Stable
-9632,Stable
-9633,Stable
-9634,Stable
-9635,Stable
-9636,Stable
-9637,Stable
-9638,Stable
-9639,Stable
-9640,Stable
-9641,Stable
-9642,Stable
-9643,Stable
-9644,Stable
-9645,Stable
-9646,Stable
-9647,Stable
-9648,Stable
-9649,Stable
-9650,Stable
-9651,Stable
-9652,Stable
-9653,Stable
-9654,Stable
-9655,Stable
-9656,Stable
-9657,Stable
-9658,Stable
-9659,Stable
-9660,Stable
-9661,Stable
-9662,Stable
-9663,Stable
-9664,Stable
-9665,Stable
-9666,Stable
-9667,Stable
-9668,Stable
-9669,Stable
-9670,Stable
-9671,Stable
-9672,Stable
-9673,Stable
-9674,Stable
-9675,Stable
-9676,Stable
-9677,Stable
-9678,Stable
-9679,Stable
-9680,Stable
-9681,Stable
-9682,Stable
-9683,Stable
-9684,Stable
-9685,Stable
-9686,Stable
-9687,Stable
-9688,Stable
-9689,Stable
-9690,Stable
-9691,Stable
-9692,Stable
-9693,Stable
-9694,Stable
-9695,Stable
-9696,Stable
-9697,Stable
-9698,Stable
-9699,Stable
-9700,Stable
-9701,Stable
-9702,Stable
-9703,Stable
-9704,Stable
-9705,Stable
-9706,Stable
-9707,Stable
-9708,Stable
-9709,Stable
-9710,Stable
-9711,Stable
-9712,Stable
-9713,Stable
-9714,Stable
-9715,Stable
-9716,Stable
-9717,Stable
-9718,Stable
-9719,Stable
-9720,Stable
-9721,Stable
-9722,Stable
-9723,Stable
-9724,Stable
-9725,Stable
-9726,Stable
-9727,Stable
-9728,Stable
-9729,Stable
-9730,Stable
-9731,Stable
-9732,Stable
-9733,Stable
-9734,Stable
-9735,Stable
-9736,Stable
-9737,Stable
-9738,Stable
-9739,Stable
-9740,Stable
-9741,Stable
-9742,Stable
-9743,Stable
-9744,Stable
-9745,Stable
-9746,Stable
-9747,Stable
-9748,Stable
-9749,Stable
-9750,Stable
-9751,Stable
-9752,Stable
-9753,Stable
-9754,Stable
-9755,Stable
-9756,Stable
-9757,Stable
-9758,Stable
-9759,Stable
-9760,Stable
-9761,Stable
-9762,Stable
-9763,Stable
-9764,Stable
-9765,Stable
-9766,Stable
-9767,Stable
-9768,Stable
-9769,Stable
-9770,Stable
-9771,Stable
-9772,Stable
-9773,Stable
-9774,Stable
-9775,Stable
-9776,Stable
-9777,Stable
-9778,Stable
-9779,Stable
-9780,Stable
-9781,Stable
-9782,Stable
-9783,Stable
-9784,Stable
-9785,Stable
-9786,Stable
-9787,Stable
-9788,Stable
-9789,Stable
-9790,Stable
-9791,Stable
-9792,Stable
-9793,Stable
-9794,Stable
-9795,Stable
-9796,Stable
-9797,Stable
-9798,Stable
-9799,Stable
-9800,Stable
-9801,Stable
-9802,Stable
-9803,Stable
-9804,Stable
-9805,Stable
-9806,Stable
-9807,Stable
-9808,Stable
-9809,Stable
-9810,Stable
-9811,Stable
-9812,Stable
-9813,Stable
-9814,Stable
-9815,Stable
-9816,Stable
-9817,Stable
-9818,Stable
-9819,Stable
-9820,Stable
-9821,Stable
-9822,Stable
-9823,Stable
-9824,Stable
-9825,Stable
-9826,Stable
-9827,Stable
-9828,Stable
-9829,Stable
-9830,Stable
-9831,Stable
-9832,Stable
-9833,Stable
-9834,Stable
-9835,Stable
-9836,Stable
-9837,Stable
-9838,Stable
-9839,Stable
-9840,Stable
-9841,Stable
-9842,Stable
-9843,Stable
-9844,Stable
-9845,Stable
-9846,Stable
-9847,Stable
-9848,Stable
-9849,Stable
-9850,Stable
-9851,Stable
-9852,Stable
-9853,Stable
-9854,Stable
-9855,Stable
-9856,Stable
-9857,Stable
-9858,Stable
-9859,Stable
-9860,Stable
-9861,Stable
-9862,Stable
-9863,Stable
-9864,Stable
-9865,Stable
-9866,Stable
-9867,Stable
-9868,Stable
-9869,Stable
-9870,Stable
-9871,Stable
-9872,Stable
-9873,Stable
-9874,Stable
-9875,Stable
-9876,Stable
-9877,Stable
-9878,Stable
-9879,Stable
-9880,Stable
-9881,Stable
-9882,Stable
-9883,Stable
-9884,Stable
-9885,Stable
-9886,Stable
-9887,Stable
-9888,Stable
-9889,Stable
-9890,Stable
-9891,Stable
-9892,Stable
-9893,Stable
-9894,Stable
-9895,Stable
-9896,Stable
-9897,Stable
-9898,Stable
-9899,Stable
-9900,Stable
-9901,Stable
-9902,Stable
-9903,Stable
-9904,Stable
-9905,Stable
-9906,Stable
-9907,Stable
-9908,Stable
-9909,Stable
-9910,Stable
-9911,Stable
-9912,Stable
-9913,Stable
-9914,Stable
-9915,Stable
-9916,Stable
-9917,Stable
-9918,Stable
-9919,Stable
-9920,Stable
-9921,Stable
-9922,Stable
-9923,Stable
-9924,Stable
-9925,Stable
-9926,Stable
-9927,Stable
-9928,Stable
-9929,Stable
-9930,Stable
-9931,Stable
-9932,Stable
-9933,Stable
-9934,Stable
-9935,Stable
-9936,Stable
-9937,Stable
-9938,Stable
-9939,Stable
-9940,Stable
-9941,Stable
-9942,Stable
-9943,Stable
-9944,Stable
-9945,Stable
-9946,Stable
-9947,Stable
-9948,Stable
-9949,Stable
-9950,Stable
-9951,Stable
-9952,Stable
-9953,Stable
-9954,Stable
-9955,Stable
-9956,Stable
-9957,Stable
-9958,Stable
-9959,Stable
-9960,Stable
-9961,Stable
-9962,Stable
-9963,Stable
-9964,Stable
-9965,Stable
-9966,Stable
-9967,Stable
-9968,Stable
-9969,Stable
-9970,Stable
-9971,Stable
-9972,Stable
-9973,Stable
-9974,Stable
-9975,Stable
-9976,Stable
-9977,Stable
-9978,Stable
-9979,Stable
-9980,Stable
-9981,Stable
-9982,Stable
-9983,Stable
-9984,Stable
-9985,Stable
-9986,Stable
-9987,Stable
-9988,Stable
-9989,Stable
-9990,Stable
-9991,Stable
-9992,Stable
-9993,Stable
-9994,Stable
-9995,Stable
-9996,Stable
-9997,Stable
-9998,Stable
-9999,Stable
-10000,Stable
-10001,Stable
-10002,Stable
-10003,Stable
-10004,Stable
-10005,Stable
-10006,Stable
-10007,Stable
-10008,Stable
-10009,Stable
-10010,Stable
-10011,Stable
-10012,Stable
-10013,Stable
-10014,Stable
-10015,Stable
-10016,Stable
-10017,Stable
-10018,Stable
-10019,Stable
-10020,Stable
-10021,Stable
-10022,Stable
-10023,Stable
-10024,Stable
-10025,Stable
-10026,Stable
-10027,Stable
-10028,Stable
-10029,Stable
-10030,Stable
-10031,Stable
-10032,Stable
-10033,Stable
-10034,Stable
-10035,Stable
-10036,Stable
-10037,Stable
-10038,Stable
-10039,Stable
-10040,Stable
-10041,Stable
-10042,Stable
-10043,Stable
-10044,Stable
-10045,Stable
-10046,Stable
-10047,Stable
-10048,Stable
-10049,Stable
-10050,Stable
-10051,Stable
-10052,Stable
-10053,Stable
-10054,Stable
-10055,Stable
-10056,Stable
-10057,Stable
-10058,Stable
-10059,Stable
-10060,Stable
-10061,Stable
-10062,Stable
-10063,Stable
-10064,Stable
-10065,Stable
-10066,Stable
-10067,Stable
-10068,Stable
-10069,Stable
-10070,Stable
-10071,Stable
-10072,Stable
-10073,Stable
-10074,Stable
-10075,Stable
-10076,Stable
-10077,Stable
-10078,Stable
-10079,Stable
-10080,Stable
-10081,Stable
-10082,Stable
-10083,Stable
-10084,Stable
-10085,Stable
-10086,Stable
-10087,Stable
-10088,Stable
-10089,Stable
-10090,Stable
-10091,Stable
-10092,Stable
-10093,Stable
-10094,Stable
-10095,Stable
-10096,Stable
-10097,Stable
-10098,Stable
-10099,Stable
-10100,Stable
-10101,Stable
-10102,Stable
-10103,Stable
-10104,Stable
-10105,Stable
-10106,Stable
-10107,Stable
-10108,Stable
-10109,Stable
-10110,Stable
-10111,Stable
-10112,Stable
-10113,Stable
-10114,Stable
-10115,Stable
-10116,Stable
-10117,Stable
-10118,Stable
-10119,Stable
-10120,Stable
-10121,Stable
-10122,Stable
-10123,Stable
-10124,Stable
-10125,Stable
-10126,Stable
-10127,Stable
-10128,Stable
-10129,Stable
-10130,Stable
-10131,Stable
-10132,Stable
-10133,Stable
-10134,Stable
-10135,Stable
-10136,Stable
-10137,Stable
-10138,Stable
-10139,Stable
-10140,Stable
-10141,Stable
-10142,Stable
-10143,Stable
-10144,Stable
-10145,Stable
-10146,Stable
-10147,Stable
-10148,Stable
-10149,Stable
-10150,Stable
-10151,Stable
-10152,Stable
-10153,Stable
-10154,Stable
-10155,Stable
-10156,Stable
-10157,Stable
-10158,Stable
-10159,Stable
-10160,Stable
-10161,Stable
-10162,Stable
-10163,Stable
-10164,Stable
-10165,Stable
-10166,Stable
-10167,Stable
-10168,Stable
-10169,Stable
-10170,Stable
-10171,Stable
-10172,Stable
-10173,Stable
-10174,Stable
-10175,Stable
-10176,Stable
-10177,Stable
-10178,Stable
-10179,Stable
-10180,Stable
-10181,Stable
-10182,Stable
-10183,Stable
-10184,Stable
-10185,Stable
-10186,Stable
-10187,Stable
-10188,Stable
-10189,Stable
-10190,Stable
-10191,Stable
-10192,Stable
-10193,Stable
-10194,Stable
-10195,Stable
-10196,Stable
-10197,Stable
-10198,Stable
-10199,Stable
-10200,Stable
-10201,Stable
-10202,Stable
-10203,Stable
-10204,Stable
-10205,Stable
-10206,Stable
-10207,Stable
-10208,Stable
-10209,Stable
-10210,Stable
-10211,Stable
-10212,Stable
-10213,Stable
-10214,Stable
-10215,Stable
-10216,Stable
-10217,Stable
-10218,Stable
-10219,Stable
-10220,Stable
-10221,Stable
-10222,Stable
-10223,Stable
-10224,Stable
-10225,Stable
-10226,Stable
-10227,Stable
-10228,Stable
-10229,Stable
-10230,Stable
-10231,Stable
-10232,Stable
-10233,Stable
-10234,Stable
-10235,Stable
-10236,Stable
-10237,Stable
-10238,Stable
-10239,Stable
-10240,Stable
-10241,Stable
-10242,Stable
-10243,Stable
-10244,Stable
-10245,Stable
-10246,Stable
-10247,Stable
-10248,Stable
-10249,Stable
-10250,Stable
-10251,Stable
-10252,Stable
-10253,Stable
-10254,Stable
-10255,Stable
-10256,Stable
-10257,Stable
-10258,Stable
-10259,Stable
-10260,Stable
-10261,Stable
-10262,Stable
-10263,Stable
-10264,Stable
-10265,Stable
-10266,Stable
-10267,Stable
-10268,Stable
-10269,Stable
-10270,Stable
-10271,Stable
-10272,Stable
-10273,Stable
-10274,Stable
-10275,Stable
-10276,Stable
-10277,Stable
-10278,Stable
-10279,Stable
-10280,Stable
-10281,Stable
-10282,Stable
-10283,Stable
-10284,Stable
-10285,Stable
-10286,Stable
-10287,Stable
-10288,Stable
-10289,Stable
-10290,Stable
-10291,Stable
-10292,Stable
-10293,Stable
-10294,Stable
-10295,Stable
-10296,Stable
-10297,Stable
-10298,Stable
-10299,Stable
-10300,Stable
-10301,Stable
-10302,Stable
-10303,Stable
-10304,Stable
-10305,Stable
-10306,Stable
-10307,Stable
-10308,Stable
-10309,Stable
-10310,Stable
-10311,Stable
-10312,Stable
-10313,Stable
-10314,Stable
-10315,Stable
-10316,Stable
-10317,Stable
-10318,Stable
-10319,Stable
-10320,Stable
-10321,Stable
-10322,Stable
-10323,Stable
-10324,Stable
-10325,Stable
-10326,Stable
-10327,Stable
-10328,Stable
-10329,Stable
-10330,Stable
-10331,Stable
-10332,Stable
-10333,Stable
-10334,Stable
-10335,Stable
-10336,Stable
-10337,Stable
-10338,Stable
-10339,Stable
-10340,Stable
-10341,Stable
-10342,Stable
-10343,Stable
-10344,Stable
-10345,Stable
-10346,Stable
-10347,Stable
-10348,Stable
-10349,Stable
-10350,Stable
-10351,Stable
-10352,Stable
-10353,Stable
-10354,Stable
-10355,Stable
-10356,Stable
-10357,Stable
-10358,Stable
-10359,Stable
-10360,Stable
-10361,Stable
-10362,Stable
-10363,Stable
-10364,Stable
-10365,Stable
-10366,Stable
-10367,Stable
-10368,Stable
-10369,Stable
-10370,Stable
-10371,Stable
-10372,Stable
-10373,Stable
-10374,Stable
-10375,Stable
-10376,Stable
-10377,Stable
-10378,Stable
-10379,Stable
-10380,Stable
-10381,Stable
-10382,Stable
-10383,Stable
-10384,Stable
-10385,Stable
-10386,Stable
-10387,Stable
-10388,Stable
-10389,Stable
-10390,Stable
-10391,Stable
-10392,Stable
-10393,Stable
-10394,Stable
-10395,Stable
-10396,Stable
-10397,Stable
-10398,Stable
-10399,Stable
-10400,Stable
-10401,Stable
-10402,Stable
-10403,Stable
-10404,Stable
-10405,Stable
-10406,Stable
-10407,Stable
-10408,Stable
-10409,Stable
-10410,Stable
-10411,Stable
-10412,Stable
-10413,Stable
-10414,Stable
-10415,Stable
-10416,Stable
-10417,Stable
-10418,Stable
-10419,Stable
-10420,Stable
-10421,Stable
-10422,Stable
-10423,Stable
-10424,Stable
-10425,Stable
-10426,Stable
-10427,Stable
-10428,Stable
-10429,Stable
-10430,Stable
-10431,Stable
-10432,Stable
-10433,Stable
-10434,Stable
-10435,Stable
-10436,Stable
-10437,Stable
-10438,Stable
-10439,Stable
-10440,Stable
-10441,Stable
-10442,Stable
-10443,Stable
-10444,Stable
-10445,Stable
-10446,Stable
-10447,Stable
-10448,Stable
-10449,Stable
-10450,Stable
-10451,Stable
-10452,Stable
-10453,Stable
-10454,Stable
-10455,Stable
-10456,Stable
-10457,Stable
-10458,Stable
-10459,Stable
-10460,Stable
-10461,Stable
-10462,Stable
-10463,Stable
-10464,Stable
-10465,Stable
-10466,Stable
-10467,Stable
-10468,Stable
-10469,Stable
-10470,Stable
-10471,Stable
-10472,Stable
-10473,Stable
-10474,Stable
-10475,Stable
-10476,Stable
-10477,Stable
-10478,Stable
-10479,Stable
-10480,Stable
-10481,Stable
-10482,Stable
-10483,Stable
-10484,Stable
-10485,Stable
-10486,Stable
-10487,Stable
-10488,Stable
-10489,Stable
-10490,Stable
-10491,Stable
-10492,Stable
-10493,Stable
-10494,Stable
-10495,Stable
-10496,Stable
-10497,Stable
-10498,Stable
-10499,Stable
-10500,Stable
-10501,Stable
-10502,Stable
-10503,Stable
-10504,Stable
-10505,Stable
-10506,Stable
-10507,Stable
-10508,Stable
-10509,Stable
-10510,Stable
-10511,Stable
-10512,Stable
-10513,Stable
-10514,Stable
-10515,Stable
-10516,Stable
-10517,Stable
-10518,Stable
-10519,Stable
-10520,Stable
-10521,Stable
-10522,Stable
-10523,Stable
-10524,Stable
-10525,Stable
-10526,Stable
-10527,Stable
-10528,Stable
-10529,Stable
-10530,Stable
-10531,Stable
-10532,Stable
-10533,Stable
-10534,Stable
-10535,Stable
-10536,Stable
-10537,Stable
-10538,Stable
-10539,Stable
-10540,Stable
-10541,Stable
-10542,Stable
-10543,Stable
-10544,Stable
-10545,Stable
-10546,Stable
-10547,Stable
-10548,Stable
-10549,Stable
-10550,Stable
-10551,Stable
-10552,Stable
-10553,Stable
-10554,Stable
-10555,Stable
-10556,Stable
-10557,Stable
-10558,Stable
-10559,Stable
-10560,Stable
-10561,Stable
-10562,Stable
-10563,Stable
-10564,Stable
-10565,Stable
-10566,Stable
-10567,Stable
-10568,Stable
-10569,Stable
-10570,Stable
-10571,Stable
-10572,Stable
-10573,Stable
-10574,Stable
-10575,Stable
-10576,Stable
-10577,Stable
-10578,Stable
-10579,Stable
-10580,Stable
-10581,Stable
-10582,Stable
-10583,Stable
-10584,Stable
-10585,Stable
-10586,Stable
-10587,Stable
-10588,Stable
-10589,Stable
-10590,Stable
-10591,Stable
-10592,Stable
-10593,Stable
-10594,Stable
-10595,Stable
-10596,Stable
-10597,Stable
-10598,Stable
-10599,Stable
-10600,Stable
-10601,Stable
-10602,Stable
-10603,Stable
-10604,Stable
-10605,Stable
-10606,Stable
-10607,Stable
-10608,Stable
-10609,Stable
-10610,Stable
-10611,Stable
-10612,Stable
-10613,Stable
-10614,Stable
-10615,Stable
-10616,Stable
-10617,Stable
-10618,Stable
-10619,Stable
-10620,Stable
-10621,Stable
-10622,Stable
-10623,Stable
-10624,Stable
-10625,Stable
-10626,Stable
-10627,Stable
-10628,Stable
-10629,Stable
-10630,Stable
-10631,Stable
-10632,Stable
-10633,Stable
-10634,Stable
-10635,Stable
-10636,Stable
-10637,Stable
-10638,Stable
-10639,Stable
-10640,Stable
-10641,Stable
-10642,Stable
-10643,Stable
-10644,Stable
-10645,Stable
-10646,Stable
-10647,Stable
-10648,Stable
-10649,Stable
-10650,Stable
-10651,Stable
-10652,Stable
-10653,Stable
-10654,Stable
-10655,Stable
-10656,Stable
-10657,Stable
-10658,Stable
-10659,Stable
-10660,Stable
-10661,Stable
-10662,Stable
-10663,Stable
-10664,Stable
-10665,Stable
-10666,Stable
-10667,Stable
-10668,Stable
-10669,Stable
-10670,Stable
-10671,Stable
-10672,Stable
-10673,Stable
-10674,Stable
-10675,Stable
-10676,Stable
-10677,Stable
-10678,Stable
-10679,Stable
-10680,Stable
-10681,Stable
-10682,Stable
-10683,Stable
-10684,Stable
-10685,Stable
-10686,Stable
-10687,Stable
-10688,Stable
-10689,Stable
-10690,Stable
-10691,Stable
-10692,Stable
-10693,Stable
-10694,Stable
-10695,Stable
-10696,Stable
-10697,Stable
-10698,Stable
-10699,Stable
-10700,Stable
-10701,Stable
-10702,Stable
-10703,Stable
-10704,Stable
-10705,Stable
-10706,Stable
-10707,Stable
-10708,Stable
-10709,Stable
-10710,Stable
-10711,Stable
-10712,Stable
-10713,Stable
-10714,Stable
-10715,Stable
-10716,Stable
-10717,Stable
-10718,Stable
-10719,Stable
-10720,Stable
-10721,Stable
-10722,Stable
-10723,Stable
-10724,Stable
-10725,Stable
-10726,Stable
-10727,Stable
-10728,Stable
-10729,Stable
-10730,Stable
-10731,Stable
-10732,Stable
-10733,Stable
-10734,Stable
-10735,Stable
-10736,Stable
-10737,Stable
-10738,Stable
-10739,Stable
-10740,Stable
-10741,Stable
-10742,Stable
-10743,Stable
-10744,Stable
-10745,Stable
-10746,Stable
-10747,Stable
-10748,Stable
-10749,Stable
-10750,Stable
-10751,Stable
-10752,Stable
-10753,Stable
-10754,Stable
-10755,Stable
-10756,Stable
-10757,Stable
-10758,Stable
-10759,Stable
-10760,Stable
-10761,Stable
-10762,Stable
-10763,Stable
-10764,Stable
-10765,Stable
-10766,Stable
-10767,Stable
-10768,Stable
-10769,Stable
-10770,Stable
-10771,Stable
-10772,Stable
-10773,Stable
-10774,Stable
-10775,Stable
-10776,Stable
-10777,Stable
-10778,Stable
-10779,Stable
-10780,Stable
-10781,Stable
-10782,Stable
-10783,Stable
-10784,Stable
-10785,Stable
-10786,Stable
-10787,Stable
-10788,Stable
-10789,Stable
-10790,Stable
-10791,Stable
-10792,Stable
-10793,Stable
-10794,Stable
-10795,Stable
-10796,Stable
-10797,Stable
-10798,Stable
-10799,Stable
