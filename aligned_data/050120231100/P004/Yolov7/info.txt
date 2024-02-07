@@ -1,2 +1,2 @@
-segment start frame: 2250
-segrement end frame: 10650
+segment start frame (P4_Front_Track_1.csv): 2250
+segrement end frame (P4_Front_Track_2.csv): 10650

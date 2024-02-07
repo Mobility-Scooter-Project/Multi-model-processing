@@ -1,2 +1,2 @@
-segment start frame: 1200
-segment end frame: 6030
+segment start frame (FrontView_1.csv): 1200
+segment end frame (FrontView_4.csv): 6030
