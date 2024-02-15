@@ -88,15 +88,10 @@ train_arr, test_arr = \
 train_dataset, seq_len, n_features = create_dataset(train_arr)
 test_dataset, __, __ = create_dataset(test_arr)
 
-
+# Train
 model = Autoencoder(seq_len, n_features, embedding_dim=324)
 model, history = train_model(model, train_dataset, test_dataset, epochs=150)
 
 # Save model
 PATH = "./models/lstm_autoencoder"
 torch.save(model, PATH)
-
-
-        
-
-
