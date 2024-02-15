@@ -17,7 +17,6 @@ def create_dataset(numpyArr):
 def train_model(model, train_dataset, test_dataset, epochs):
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     loss_fn = nn.L1Loss(reduction='sum').to(device)
-
     history = dict(train=[], test=[])
 
     for epoch in range(0, epochs):
@@ -53,8 +52,8 @@ def train_model(model, train_dataset, test_dataset, epochs):
         # For graph
         train_loss = np.mean(train_losses)
         test_loss = np.mean(test_losses)
-        history['train'].append(train_loss)
-        history['test'].append(test_loss)
+        # history['train'].append(train_loss)
+        # history['test'].append(test_loss)
     
         print(f"Epoch {epoch}: train loss {train_loss}, test loss {test_loss}")
 
