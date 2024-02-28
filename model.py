@@ -84,6 +84,7 @@ filtered_pose_arr = filter(label_arr, pose_arr)
 
 RANDOM_SEED = 42
 SEQUENCE_LENGTH = 4
+BATCH_SIZE = 64
 N_FEATURES = 18
 
 full_dataset = PoseSequenceDataset( 
@@ -96,8 +97,8 @@ train_dataset, test_dataset = \
     train_test_split(full_dataset, test_size=0.15, random_state=RANDOM_SEED)
 
 torch.manual_seed(RANDOM_SEED)
-train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=64, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 # Train
 model = Autoencoder(SEQUENCE_LENGTH, N_FEATURES, embedding_dim=324)
