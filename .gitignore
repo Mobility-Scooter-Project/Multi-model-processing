@@ -1,3 +1,2 @@
-sequence_data.py
-test.py
-move_sequence.py
+__pycache__/
+test/
