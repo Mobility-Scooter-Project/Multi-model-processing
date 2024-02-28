@@ -3,9 +3,6 @@ import torch.nn as nn
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-# TODO: augment batch size 
-BATCH_SIZE = 1
-
 class Encoder(nn.Module):
   def __init__(self, seq_len, n_features, embedding_dim=64):
     super(Encoder, self).__init__()
@@ -25,13 +22,13 @@ class Encoder(nn.Module):
     )
 
   def forward(self, x):
-    x = x.reshape((BATCH_SIZE, self.seq_len, self.n_features))
+    x = x.reshape((1, self.seq_len, self.n_features))
     x, (_, _) = self.rnn1(x)
     x, (hidden_n, _) = self.rnn2(x)
     return hidden_n.reshape((1, self.embedding_dim))
   
 class Decoder(nn.Module):
-  def __init__(self, seq_len, input_dim=64, n_features=BATCH_SIZE):
+  def __init__(self, seq_len, input_dim=64, n_features=1):
     super(Decoder, self).__init__()
     self.seq_len, self.input_dim = seq_len, input_dim
     self.hidden_dim, self.n_features = 2 * input_dim, n_features
