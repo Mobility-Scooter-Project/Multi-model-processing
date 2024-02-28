@@ -10,12 +10,6 @@ from pose_sequence import PoseSequenceDataset
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-def create_dataset(numpyArr):
-#   dataset = [torch.tensor(s).unsqueeze(0) for s in numpyArr]
-#   print(torch.stack(dataset).shape)
-  n_seq, seq_len, n_features = torch.stack(numpyArr).shape
-  return numpyArr, seq_len, n_features
-
 def train_model(model, train_loader, test_loader, epochs):
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     loss_fn = nn.L1Loss(reduction='sum').to(device)
