@@ -5,13 +5,13 @@ from autoencoder import Autoencoder
 from torch import optim, nn
 from torch.utils.data import DataLoader
 import numpy as np
-from pose_sequence import PoseSequenceDataset
+from sequence_dataset import SequenceDataset
 
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 def train_model(model, train_loader, test_loader, epochs):
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
     loss_fn = nn.L1Loss(reduction='sum').to(device)
     history = dict(train=[], test=[])
 
@@ -81,7 +81,7 @@ SEQUENCE_LENGTH = 4
 BATCH_SIZE = 64
 N_FEATURES = 18
 
-full_dataset = PoseSequenceDataset( 
+full_dataset = SequenceDataset( 
     filtered_pose_arr,
     sequence_length=SEQUENCE_LENGTH
 )

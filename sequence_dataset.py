@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import Dataset
 
-class PoseSequenceDataset(Dataset):
+class SequenceDataset(Dataset):
     def __init__(self, numpyArr, sequence_length=5):
         self.sequence_length = sequence_length
         self.X = torch.from_numpy(numpyArr).float()
