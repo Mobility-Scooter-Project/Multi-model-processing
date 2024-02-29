@@ -11,7 +11,7 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 
 def train_model(model, train_loader, test_loader, epochs):
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
-    loss_fn = nn.L1Loss(reduction='sum').to(device)
+    loss_fn = nn.MSELoss().to(device)
     history = dict(train=[], test=[])
 
     for epoch in range(0, epochs):
@@ -80,8 +80,8 @@ move_arr = expand_dataset(move_arr, EXPANSION_FACTOR)
 filtered_move_arr = filter(label_arr, move_arr)
 
 RANDOM_SEED = 42
-SEQUENCE_LENGTH = 4
-BATCH_SIZE = 1
+SEQUENCE_LENGTH = 45
+BATCH_SIZE = 64
 N_FEATURES = 6
 
 full_dataset = SequenceDataset( 
@@ -98,9 +98,9 @@ train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 # Train
-model = Autoencoder(SEQUENCE_LENGTH, N_FEATURES, embedding_dim=324)
-model, history = train_model(model, train_loader, test_loader, epochs=150)
+model = Autoencoder(SEQUENCE_LENGTH, N_FEATURES, embedding_dim=72)
+model, history = train_model(model, train_loader, test_loader, epochs=20)
 
 # Save model
-PATH = "./models/lstm_autoencoder"
+PATH = "./models/move_autoencoder"
 torch.save(model, PATH)
