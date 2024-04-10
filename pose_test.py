@@ -5,7 +5,7 @@ from sequence_dataset import SequenceDataset
 from torch.utils.data import DataLoader
 
 PATH = "./models/pose_autoencoder_65"
-CSV_PATH = "./testing/pose_test_unstable.csv"
+CSV_PATH = "./testing/pose_test_stable.csv"
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 

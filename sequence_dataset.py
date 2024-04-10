@@ -4,7 +4,8 @@ from torch.utils.data import Dataset
 class SequenceDataset(Dataset):
     def __init__(self, numpyArr, sequence_length=5):
         self.sequence_length = sequence_length
-        self.X = torch.from_numpy(numpyArr).float()
+        # self.X = torch.from_numpy(numpyArr).float()
+        self.X = torch.from_numpy(numpyArr)
         self.size = len(numpyArr)-sequence_length
 
     def __len__(self):
