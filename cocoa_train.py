@@ -114,7 +114,6 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
                 pred_pose_batch.append(pose_pred)
                 pred_move_batch.append(move_pred)
             loss = loss_fn(pred_pose_batch, pred_move_batch, label_batch)
-            loss = loss / BATCH_SIZE 
             loss.backward()
             optimizer.step()
             train_losses.append(loss.item())
@@ -132,7 +131,6 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
                     pred_pose_batch.append(pose_pred)
                     pred_move_batch.append(move_pred)
                 loss = loss_fn(pred_pose_batch, pred_move_batch, label_test_batch)
-                loss = loss / BATCH_SIZE
                 test_losses.append(loss.item())
         train_loss = np.mean(train_losses)
         test_loss = np.mean(test_losses)
