@@ -25,6 +25,7 @@ class Encoder(nn.Module):
     x = x.reshape((1, self.seq_len, self.n_features))
     x, (_, _) = self.rnn1(x)
     x, (hidden_n, _) = self.rnn2(x)
+    # relu
     return hidden_n.reshape((1, self.embedding_dim))
   
 class ConcatLinear(nn.Module):
@@ -49,7 +50,9 @@ class Cocoa(nn.Module):
     self.y_encoder = Encoder(seq_len, y_n_features, embedding_dim).to(device)
     self.x_linear = nn.Linear(in_features=embedding_dim, out_features=embedding_dim).to(device)
     self.y_linear = nn.Linear(in_features=embedding_dim, out_features=embedding_dim).to(device)
+    
     self.concat_linear = ConcatLinear(x_n_features=embedding_dim, y_n_features=embedding_dim).to(device)
+    # relu
 
   def forward(self, x, y):
     x = self.x_encoder(x)

@@ -49,10 +49,13 @@ label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
 
 RANDOM_SEED = 42
 SEQUENCE_LENGTH = 6
-BATCH_SIZE = 20
+BATCH_SIZE = 100
 POSE_N_FEATURES = 18
 MOVE_N_FEATURES = 6
 TEST_SIZE = 0.15
+TAU = 5
+LAM = 2
+EPOCHS = 10
 
 label_dataset = SequenceDataset( 
     label_arr,
@@ -104,8 +107,8 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
         for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
             optimizer.zero_grad()
             # Skip batches without negative pairs
-            # if not find_negatives(label_batch):
-            #     continue
+            if not find_negatives(label_batch):
+                continue
             pred_pose_batch = []
             pred_move_batch = []
             for pose_true, move_true in zip(pose_batch, move_batch):
@@ -123,6 +126,8 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
 
         with torch.no_grad():
             for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
+                if not find_negatives(label_test_batch):
+                    continue
                 pred_pose_batch = []
                 pred_move_batch = []
                 for pose_true, move_true in zip(pose_test_batch, move_test_batch):
@@ -140,10 +145,6 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
 
 model = Cocoa(SEQUENCE_LENGTH, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=8)
 model.to(device)
-
-TAU = 5
-LAM = 2
-EPOCHS = 10
 
 train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
                 move_train_dataset, move_test_dataset)

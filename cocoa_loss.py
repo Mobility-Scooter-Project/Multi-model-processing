@@ -8,14 +8,14 @@ class CocoaLoss(nn.Module):
         self.lam = lam
 
     def forward(self, x_pred_batch, y_pred_batch, label_batch):
-        pos_error = self.__calc_pos_error(x_pred_batch, y_pred_batch)
+        # pos_error = self.__calc_pos_error(x_pred_batch, y_pred_batch)
         neg_idxs = self.__find_negatives(label_batch)
         x_neg_error = self.__calc_neg_error(x_pred_batch, neg_idxs)
         y_neg_error = self.__calc_neg_error(y_pred_batch, neg_idxs)
-        return pos_error + self.lam*(x_neg_error + y_neg_error)
+        return  self.lam*(x_neg_error + y_neg_error)
 
     def __calc_pos_error(self, x_pred_batch, y_pred_batch):
-        pos_error = 0
+        pos_error = 0 
         for pose, move in zip(x_pred_batch, y_pred_batch):
             corr = torch.linalg.matmul(pose, move)
             corr = torch.div(corr, torch.mul(torch.linalg.vector_norm(pose), torch.linalg.vector_norm(move)))
@@ -48,5 +48,7 @@ class CocoaLoss(nn.Module):
                 discrim = torch.div(discrim, torch.mul(torch.linalg.vector_norm(pred_batch[idx]), torch.linalg.vector_norm(seq)))
                 discrim = torch.exp(discrim / self.tau)
                 neg_error = torch.add(neg_error, discrim)
+                print(f"neg error: {neg_error}")
                 i += 1
+        # print(f"number: {i}")
         return neg_error / i
