@@ -48,7 +48,5 @@ class CocoaLoss(nn.Module):
                 discrim = torch.div(discrim, torch.mul(torch.linalg.vector_norm(pred_batch[idx]), torch.linalg.vector_norm(seq)))
                 discrim = torch.exp(discrim / self.tau)
                 neg_error = torch.add(neg_error, discrim)
-                print(f"neg error: {neg_error}")
                 i += 1
-        # print(f"number: {i}")
         return neg_error / i
