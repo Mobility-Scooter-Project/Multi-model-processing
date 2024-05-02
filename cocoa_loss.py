@@ -18,13 +18,13 @@ class CocoaLoss(nn.Module):
         pos_error = 0
         for pose, move in zip(x_pred_batch, y_pred_batch):
             corr = torch.linalg.matmul(pose, move)
-            corr = torch.div(corr, torch.mul(torch.linalg.vector_norm(x_pred_batch), torch.linalg.vector_norm(y_pred_batch)))
+            corr = torch.div(corr, torch.mul(torch.linalg.vector_norm(pose), torch.linalg.vector_norm(move)))
             corr = torch.sub(1, corr)
             corr = torch.exp(corr / self.tau)
             pos_error = torch.add(pos_error, corr)
         return pos_error
     
-    def __find_negatives(label_batch):
+    def __find_negatives(self, label_batch):
         THRESHOLD = 1
         negatives = []
         for idx, label_seq in enumerate(label_batch):
@@ -38,6 +38,8 @@ class CocoaLoss(nn.Module):
 
     def __calc_neg_error(self, pred_batch, neg_indexs):
         neg_error = 0
+        if not neg_indexs:
+            return neg_error
         i = 0
         for idx in neg_indexs:
             non_neg_sequences = [seq for i, seq in enumerate(pred_batch) if i not in neg_indexs]

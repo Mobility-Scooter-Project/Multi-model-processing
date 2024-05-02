@@ -30,14 +30,17 @@ class Encoder(nn.Module):
 class ConcatLinear(nn.Module):
   def __init__(self, x_n_features, y_n_features):
     super(ConcatLinear, self).__init__()
-    self.in_features, self.out_features = x_n_features+y_n_features
+    self.x_in_features, self.y_in_features = x_n_features, y_n_features
     concat_features = x_n_features+y_n_features
     self.linear = nn.Linear(in_features=concat_features, out_features=concat_features).to(device)
   
   def forward(self, x,y):
-    xy = torch.cat((x,y), 0)
+    xy = torch.cat([x,y], dim=-1)
     xy = self.linear(xy)
-    return xy[:self.in_features], xy[self.in_features:]
+    xy = torch.squeeze(xy, 0)
+    _x = xy[:self.x_in_features]
+    _y = xy[self.x_in_features:]
+    return _x, _y
     
 class Cocoa(nn.Module):
   def __init__(self, seq_len, x_n_features, y_n_features, embedding_dim=64):
@@ -46,7 +49,7 @@ class Cocoa(nn.Module):
     self.y_encoder = Encoder(seq_len, y_n_features, embedding_dim).to(device)
     self.x_linear = nn.Linear(in_features=embedding_dim, out_features=embedding_dim).to(device)
     self.y_linear = nn.Linear(in_features=embedding_dim, out_features=embedding_dim).to(device)
-    self.concat_linear = nn.Linear(x_n_features=embedding_dim, y_n_features=embedding_dim).to(device)
+    self.concat_linear = ConcatLinear(x_n_features=embedding_dim, y_n_features=embedding_dim).to(device)
 
   def forward(self, x, y):
     x = self.x_encoder(x)

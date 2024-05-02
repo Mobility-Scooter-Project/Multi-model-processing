@@ -1,8 +1,11 @@
 from sklearn.model_selection import train_test_split
 import numpy as np
 import torch
+from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from sequence_dataset import SequenceDataset
+from cocoa_loss import CocoaLoss
+from cocoa import Cocoa
 
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -13,6 +16,18 @@ def match_length(label_arr, pose_arr, move_arr):
 
 def change_labels_to_bool(label_arr):
     return np.array([[True] if "Stable" in x else [False] for x in label_arr])
+
+def find_negatives(label_batch):
+    THRESHOLD = 1
+    negatives = []
+    for idx, label_seq in enumerate(label_batch):
+        i = 0
+        for label in label_seq:
+            if not label:
+                i += 1
+        if i > THRESHOLD:
+            negatives.append(idx)
+    return negatives
 
 # Get data
 # Current implementation deflates the number of pose to match the number of move points
@@ -33,8 +48,8 @@ move_arr = np.loadtxt("aligned_data/041720231030/P002/April_17_Run_1.csv",
 label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
 
 RANDOM_SEED = 42
-SEQUENCE_LENGTH = 2
-BATCH_SIZE = 5
+SEQUENCE_LENGTH = 6
+BATCH_SIZE = 20
 POSE_N_FEATURES = 18
 MOVE_N_FEATURES = 6
 TEST_SIZE = 0.15
@@ -64,39 +79,75 @@ pose_train_dataset, pose_test_dataset = \
 move_train_dataset, move_test_dataset = \
     train_test_split(move_dataset, test_size=TEST_SIZE, random_state=RANDOM_SEED)
 
-
-def train_model(model, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
+def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
                 move_train_dataset, move_test_dataset):
     G = torch.Generator()
     G.manual_seed(RANDOM_SEED)
     train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
     test_sampler = RandomSampler(data_source=label_test_dataset, generator=G)
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    loss_fn = CocoaLoss(tau, lam).to(device)
 
-    # for iter in epoch
-    train_sampler_save = list(train_sampler)
-    test_sampler_save = list(test_sampler)
+    for epoch in range(0, epochs):
+        model = model.train()
+        train_losses = []
+        train_sampler_save = list(train_sampler)
+        test_sampler_save = list(test_sampler)
 
-    label_train_loader = DataLoader(label_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
-    pose_train_loader = DataLoader(pose_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
-    move_train_loader = DataLoader(move_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
+        label_train_loader = DataLoader(label_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
+        pose_train_loader = DataLoader(pose_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
+        move_train_loader = DataLoader(move_train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler_save)
+        label_test_loader = DataLoader(label_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
+        pose_test_loader = DataLoader(pose_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
+        move_test_loader = DataLoader(move_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
 
-    for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
-        pred_pose_batch = []
-        pred_move_batch = []
-        for pose_true, move_true in zip(pose_batch, move_batch):
-            pose_true, move_true = pose_true.to(device), move_true.to(device)
-            pose_pred, move_pred = model(pose_true, move_true)
-            pred_pose_batch.append(pose_pred)
-            pred_move_batch.append(move_pred)
-        # loss = loss_fn(pred_pose_batch, pred_move_batch, label_batch)
+        for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
+            optimizer.zero_grad()
+            # Skip batches without negative pairs
+            # if not find_negatives(label_batch):
+            #     continue
+            pred_pose_batch = []
+            pred_move_batch = []
+            for pose_true, move_true in zip(pose_batch, move_batch):
+                pose_true, move_true = pose_true.to(device), move_true.to(device)
+                pose_pred, move_pred = model(pose_true, move_true)
+                pred_pose_batch.append(pose_pred)
+                pred_move_batch.append(move_pred)
+            loss = loss_fn(pred_pose_batch, pred_move_batch, label_batch)
+            loss = loss / BATCH_SIZE 
+            loss.backward()
+            optimizer.step()
+            train_losses.append(loss.item())
 
-        #TODO: Create loss function and implement training
-        # loss = loss / accum_iter 
-        # optimizer.step()
-        # optimizer.zero_grad()
-        
+        test_losses = []
+        model = model.eval()
 
-# train_model(None, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
-#                 move_train_dataset, move_test_dataset)
+        with torch.no_grad():
+            for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
+                pred_pose_batch = []
+                pred_move_batch = []
+                for pose_true, move_true in zip(pose_test_batch, move_test_batch):
+                    pose_true, move_true = pose_true.to(device), move_true.to(device)
+                    pose_pred, move_pred = model(pose_true, move_true)
+                    pred_pose_batch.append(pose_pred)
+                    pred_move_batch.append(move_pred)
+                loss = loss_fn(pred_pose_batch, pred_move_batch, label_test_batch)
+                loss = loss / BATCH_SIZE
+                test_losses.append(loss.item())
+        train_loss = np.mean(train_losses)
+        test_loss = np.mean(test_losses)
+        print(f"Epoch {epoch}: train loss {train_loss}, test loss {test_loss}")
+
+# Creating model:
+
+model = Cocoa(SEQUENCE_LENGTH, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=8)
+model.to(device)
+
+TAU = 5
+LAM = 2
+EPOCHS = 10
+
+train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
+                move_train_dataset, move_test_dataset)
 
     
