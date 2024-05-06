@@ -25,7 +25,6 @@ class Encoder(nn.Module):
     x = x.reshape((1, self.seq_len, self.n_features))
     x, (_, _) = self.rnn1(x)
     x, (hidden_n, _) = self.rnn2(x)
-    # relu
     return hidden_n.reshape((1, self.embedding_dim))
   
 class ConcatLinear(nn.Module):
