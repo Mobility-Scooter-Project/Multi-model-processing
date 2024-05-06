@@ -49,13 +49,13 @@ label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
 
 RANDOM_SEED = 42
 SEQUENCE_LENGTH = 6
-BATCH_SIZE = 100
+BATCH_SIZE = 50
 POSE_N_FEATURES = 18
 MOVE_N_FEATURES = 6
 TEST_SIZE = 0.15
 TAU = 5
 LAM = 2
-EPOCHS = 10
+EPOCHS = 20
 
 label_dataset = SequenceDataset( 
     label_arr,
@@ -88,7 +88,7 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
     G.manual_seed(RANDOM_SEED)
     train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
     test_sampler = RandomSampler(data_source=label_test_dataset, generator=G)
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = optim.Adam(model.parameters(), lr=1e-4)
     loss_fn = CocoaLoss(tau, lam).to(device)
 
     for epoch in range(0, epochs):
@@ -103,6 +103,7 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
         label_test_loader = DataLoader(label_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
         pose_test_loader = DataLoader(pose_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
         move_test_loader = DataLoader(move_test_dataset, batch_size=BATCH_SIZE, sampler=test_sampler_save)
+
 
         for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
             optimizer.zero_grad()
@@ -143,7 +144,7 @@ def train_model(model, tau, lam, epochs, label_train_dataset, label_test_dataset
 
 # Creating model:
 
-model = Cocoa(SEQUENCE_LENGTH, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=8)
+model = Cocoa(SEQUENCE_LENGTH, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=16)
 model.to(device)
 
 train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 

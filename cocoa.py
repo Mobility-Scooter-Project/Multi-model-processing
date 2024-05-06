@@ -44,7 +44,7 @@ class ConcatLinear(nn.Module):
     return _x, _y
     
 class Cocoa(nn.Module):
-  def __init__(self, seq_len, x_n_features, y_n_features, embedding_dim=64):
+  def __init__(self, seq_len, x_n_features, y_n_features, embedding_dim=16):
     super(Cocoa, self).__init__()
     self.x_encoder = Encoder(seq_len, x_n_features, embedding_dim).to(device)
     self.y_encoder = Encoder(seq_len, y_n_features, embedding_dim).to(device)

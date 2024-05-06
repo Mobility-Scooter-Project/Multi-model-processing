@@ -8,11 +8,11 @@ class CocoaLoss(nn.Module):
         self.lam = lam
 
     def forward(self, x_pred_batch, y_pred_batch, label_batch):
-        # pos_error = self.__calc_pos_error(x_pred_batch, y_pred_batch)
+        pos_error = self.__calc_pos_error(x_pred_batch, y_pred_batch)
         neg_idxs = self.__find_negatives(label_batch)
         x_neg_error = self.__calc_neg_error(x_pred_batch, neg_idxs)
         y_neg_error = self.__calc_neg_error(y_pred_batch, neg_idxs)
-        return  self.lam*(x_neg_error + y_neg_error)
+        return  pos_error+self.lam*(x_neg_error + y_neg_error)
 
     def __calc_pos_error(self, x_pred_batch, y_pred_batch):
         pos_error = 0 
@@ -22,7 +22,7 @@ class CocoaLoss(nn.Module):
             corr = torch.sub(1, corr)
             corr = torch.exp(corr / self.tau)
             pos_error = torch.add(pos_error, corr)
-        return pos_error
+        return pos_error / len(x_pred_batch)
     
     def __find_negatives(self, label_batch):
         THRESHOLD = 1
@@ -43,9 +43,10 @@ class CocoaLoss(nn.Module):
         i = 0
         for idx in neg_indexs:
             non_neg_sequences = [seq for i, seq in enumerate(pred_batch) if i not in neg_indexs]
+            neg_l2norm = torch.linalg.vector_norm(pred_batch[idx])
             for seq in non_neg_sequences:
                 discrim = torch.linalg.matmul(pred_batch[idx], seq)
-                discrim = torch.div(discrim, torch.mul(torch.linalg.vector_norm(pred_batch[idx]), torch.linalg.vector_norm(seq)))
+                discrim = torch.div(discrim, torch.mul(neg_l2norm, torch.linalg.vector_norm(seq)))
                 discrim = torch.exp(discrim / self.tau)
                 neg_error = torch.add(neg_error, discrim)
                 i += 1
