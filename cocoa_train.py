@@ -7,6 +7,7 @@ from sequence_dataset import SequenceDataset
 from cocoa_loss import CocoaLoss
 from cocoa import Cocoa
 from utils import match_length, change_labels_to_bool, find_negatives 
+from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -29,12 +30,8 @@ move_arr = np.loadtxt("aligned_data/041720231030/P002/April_17_Run_1.csv",
 
 label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
 
-RANDOM_SEED = 42
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
-POSE_N_FEATURES = 18
-MOVE_N_FEATURES = 6
-TEST_SIZE = 0.15
 TAU = 5
 LAM = 2
 EPOCHS = 20
