@@ -4,7 +4,7 @@ from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from cocoa_classifier import CocoaClassifier
 from config import RANDOM_SEED, LEARNING_RATE
-from utils import find_negatives
+from utils import find_negatives, get_seq_label
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -28,8 +28,8 @@ class CocoaClassifierTrainer():
                 move_train_dataset, move_test_dataset):
         G = torch.Generator()
         G.manual_seed(RANDOM_SEED)
-        train_sampler = RandomSampler(data_source=self.batch_size, generator=G)
-        test_sampler = RandomSampler(data_source=self.batch_size, generator=G)
+        train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
+        test_sampler = RandomSampler(data_source=label_test_dataset, generator=G)
 
         for epoch in range(0, epochs):
             model = self.model.train()
@@ -51,7 +51,8 @@ class CocoaClassifierTrainer():
                 for pose_true, move_true, label_true in zip(pose_batch, move_batch, label_batch):
                     pose_true, move_true, label_true = pose_true.to(device), move_true.to(device), label_true.to(device)
                     pred = model(pose_true, move_true)
-                    loss = self.loss_fn(pred, label_true)
+                    true = torch.tensor(get_seq_label(label_true), dtype=torch.float32)
+                    loss = self.loss_fn(pred, true)
                     loss.backward()
                     # Parameters are updated on every sample
                     self.optimizer.step()
@@ -60,7 +61,6 @@ class CocoaClassifierTrainer():
 
             test_losses = []
             model = self.model.eval()
-
             with torch.no_grad():
                 for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
                     if not find_negatives(label_test_batch):
@@ -68,7 +68,8 @@ class CocoaClassifierTrainer():
                     for pose_true, move_true, label_true in zip(pose_test_batch, move_test_batch, label_test_batch):
                         pose_true, move_true = pose_true.to(device), move_true.to(device)
                         pred = model(pose_true, move_true)
-                        loss = self.loss_fn(pred, label_true)
+                        true = torch.tensor(get_seq_label(label_true), dtype=torch.float32)
+                        loss = self.loss_fn(pred, true)
                         test_losses.append(loss.item())
             train_loss = np.mean(train_losses)
             test_loss = np.mean(test_losses)

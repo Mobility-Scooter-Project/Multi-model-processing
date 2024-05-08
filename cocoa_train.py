@@ -129,4 +129,6 @@ model.to(device)
 train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
                 move_train_dataset, move_test_dataset)
 
-    
+# Save model
+PATH = "./models/cocoa_encoder"
+torch.save(model.state_dict(), PATH)

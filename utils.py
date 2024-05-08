@@ -1,7 +1,7 @@
 import numpy as np
 from sequence_dataset import SequenceDataset
 from sklearn.model_selection import train_test_split
-from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR
+from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
 
 def fetch_data(pose_path, move_path, label_path, sequence_len, test_size=TEST_SIZE, deflation_factor=DEFLATION_FACTOR):
     label_arr = np.loadtxt(label_path,
@@ -51,7 +51,6 @@ def change_labels_to_bool(label_arr):
     return np.array([[True] if "Stable" in x else [False] for x in label_arr])
 
 def find_negatives(label_batch):
-    THRESHOLD = 1
     negatives = []
     for idx, label_seq in enumerate(label_batch):
         i = 0
@@ -61,3 +60,10 @@ def find_negatives(label_batch):
         if i > THRESHOLD:
             negatives.append(idx)
     return negatives
+
+def get_seq_label(label_seq):
+    unstable_count = 0
+    for label in label_seq:
+        if not label:
+            unstable_count += 1
+    return [unstable_count < THRESHOLD]
