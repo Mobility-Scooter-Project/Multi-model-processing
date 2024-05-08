@@ -34,6 +34,7 @@ class CocoaClassifierTrainer():
         for epoch in range(0, epochs):
             model = self.model.train()
             train_losses = []
+            train_accs = []
             train_sampler_save = list(train_sampler)
             test_sampler_save = list(test_sampler)
 
@@ -46,8 +47,8 @@ class CocoaClassifierTrainer():
 
             for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
                 # Skip batches without negative pairs
-                if not find_negatives(label_batch):
-                    continue
+                # if not find_negatives(label_batch):
+                #     continue
                 for pose_true, move_true, label_true in zip(pose_batch, move_batch, label_batch):
                     pose_true, move_true, label_true = pose_true.to(device), move_true.to(device), label_true.to(device)
                     pred = model(pose_true, move_true)
@@ -57,20 +58,25 @@ class CocoaClassifierTrainer():
                     # Parameters are updated on every sample
                     self.optimizer.step()
                     self.optimizer.zero_grad()
+                    train_accs.append(torch.round(pred[0]) == true[0])
                     train_losses.append(loss.item())
 
             test_losses = []
+            test_accs = []
             model = self.model.eval()
             with torch.no_grad():
                 for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
-                    if not find_negatives(label_test_batch):
-                        continue
+                    # if not find_negatives(label_test_batch):
+                    #     continue
                     for pose_true, move_true, label_true in zip(pose_test_batch, move_test_batch, label_test_batch):
                         pose_true, move_true = pose_true.to(device), move_true.to(device)
                         pred = model(pose_true, move_true)
                         true = torch.tensor(get_seq_label(label_true), dtype=torch.float32)
                         loss = self.loss_fn(pred, true)
+                        test_accs.append(torch.round(pred[0]) == true[0])
                         test_losses.append(loss.item())
             train_loss = np.mean(train_losses)
+            train_acc = np.mean(train_accs)
             test_loss = np.mean(test_losses)
-            print(f"Epoch {epoch}: train loss {train_loss}, test loss {test_loss}")
+            test_acc = np.mean(test_accs)
+            print(f"Epoch {epoch}: train loss {train_loss} | train acc {train_acc}, test loss {test_loss} | test acc {test_acc}")
