@@ -15,7 +15,7 @@ BATCH_SIZE = 50
 EPOCHS = 20
 EMBEDDING_DIM = 16
 MODEL_PATH = "./models/cocoa_encoder"
-FREEZE_STATE = True
+FREEZE_STATE = False
 
 
 pose_train_dataset, pose_test_dataset, move_train_dataset, move_test_dataset, label_train_dataset, label_test_dataset = \

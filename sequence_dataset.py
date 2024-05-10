@@ -6,7 +6,7 @@ class SequenceDataset(Dataset):
         self.sequence_length = sequence_length
         # self.X = torch.from_numpy(numpyArr).float()
         self.X = torch.from_numpy(numpyArr).float()
-        self.size = len(numpyArr)-sequence_length
+        self.size = len(numpyArr)-(sequence_length-1)
 
     def __len__(self):
         return self.size
