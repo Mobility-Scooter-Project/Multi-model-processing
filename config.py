@@ -1,3 +1,5 @@
+# Current implementation deflates the number of pose to match the number of move points
+# Another implementation may be to inflate the number of move sequences to match number of pose sequences
 BATCH_SIZE = 32
 RANDOM_SEED = 42
 POSE_N_FEATURES = 18

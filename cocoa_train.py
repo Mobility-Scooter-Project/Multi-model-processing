@@ -1,3 +1,5 @@
+import os
+
 from sklearn.model_selection import train_test_split
 import numpy as np
 import torch
@@ -6,29 +8,51 @@ from torch.utils.data import DataLoader, RandomSampler
 from sequence_dataset import SequenceDataset
 from cocoa_loss import CocoaLoss
 from cocoa import Cocoa
-from utils import match_length, change_labels_to_bool, find_negatives 
+from concatenate_data import process_data_for_patient
+from utils import find_negatives
 from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 # Get data
-# Current implementation deflates the number of pose to match the number of move points
-# Another implementation may be to inflate the number of move sequences to match number of pose sequences
-DEFLATION_FACTOR = 18 # Video frames to movement frames ratio is 18:1 
-label_arr = np.loadtxt("aligned_data/041720231030/P002/Labels/Front_full_labels.csv",
-                 delimiter=",", dtype=str, skiprows=1)
-label_arr = label_arr[::DEFLATION_FACTOR]
-label_arr = change_labels_to_bool(label_arr)
+base_directory = "aligned_data"
+all_dates = os.listdir(base_directory)
+aligned_data = {}
 
-pose_arr = np.loadtxt("aligned_data/041720231030/P002/Yolov7/Front_full.csv",
-                 delimiter=",", dtype="float32", skiprows=1)
-pose_arr = pose_arr[::DEFLATION_FACTOR]
+for date in all_dates:
+    date_dir = os.path.join(base_directory, date)
 
-move_arr = np.loadtxt("aligned_data/041720231030/P002/April_17_Run_1.csv",
-                 delimiter=",", usecols=range(1,7), dtype="float32", skiprows=1)
+    patients = []
+    if os.path.isdir(date_dir) and not date.endswith('.DS_Store'):
+        patients = os.listdir(date_dir)
 
-label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
+    for patient in patients:
+        patient_dir = os.path.join(date_dir, patient)
+        if os.path.isdir(patient_dir) and not patient.endswith('.DS_Store'):
+            label_data, pose_data, movement_data = process_data_for_patient(patient_dir)
+
+            date_patient_key_label = f"{date}_{patient}_label_arr"
+            date_patient_key_pose = f"{date}_{patient}_pose_arr"
+            date_patient_key_move = f"{date}_{patient}_move_arr"
+
+            aligned_data[date_patient_key_label] = label_data
+            aligned_data[date_patient_key_pose] = pose_data
+            aligned_data[date_patient_key_move] = movement_data
+
+# For example, to access the label array for the date '040520231330' and patient 'P001', you could do:
+# aligned_data['040520231330_P001_label_arr']
+label_arr = aligned_data['041720231030_P002_label_arr']
+pose_arr = aligned_data['041720231030_P002_pose_arr']
+move_arr = aligned_data['041720231030_P002_move_arr']
+
+"""
+print(aligned_data.keys())
+print(label_arr)
+print(len(pose_arr))
+print(pose_arr)
+print(move_arr)
+"""
 
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
