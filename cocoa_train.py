@@ -10,6 +10,8 @@ from cocoa_loss import CocoaLoss
 from cocoa import Cocoa
 from concatenate_data import process_data_for_patient
 from utils import find_negatives
+from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
+
 # Device agnostic
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -52,12 +54,8 @@ print(pose_arr)
 print(move_arr)
 """
 
-RANDOM_SEED = 42
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
-POSE_N_FEATURES = 18
-MOVE_N_FEATURES = 6
-TEST_SIZE = 0.15
 TAU = 5
 LAM = 2
 EPOCHS = 20
@@ -155,4 +153,6 @@ model.to(device)
 train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
                 move_train_dataset, move_test_dataset)
 
-    
+# Save model
+PATH = "./models/cocoa_encoder"
+torch.save(model.state_dict(), PATH)
