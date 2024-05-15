@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from sequence_dataset import SequenceDataset
 from sklearn.model_selection import train_test_split
 from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
@@ -43,6 +44,16 @@ def fetch_data(pose_path, move_path, label_path, sequence_len, test_size=TEST_SI
         train_test_split(move_dataset, test_size=test_size, random_state=RANDOM_SEED)
     return pose_train_dataset, pose_test_dataset, move_train_dataset, move_test_dataset, label_train_dataset, label_test_dataset
 
+def balance_data(poseSeqs, moveSeqs, labelSeqs):
+    random.seed(RANDOM_SEED)
+    neg_idxs = find_negatives(labelSeqs)
+    pos_idxs = [i for i in range(len(labelSeqs)) if i not in neg_idxs]
+    random.shuffle(neg_idxs)
+    random.shuffle(pos_idxs)
+    minimum = min(len(neg_idxs), len(pos_idxs))
+    balancedIdxs = [arr[x] for x in range(minimum) for arr in (pos_idxs, neg_idxs)]
+    return [poseSeqs[i] for i in balancedIdxs], [moveSeqs[i] for i in balancedIdxs], [labelSeqs[i] for i in balancedIdxs]
+    
 def match_length(label_arr, pose_arr, move_arr):
     minimum = min(len(label_arr), len(pose_arr), len(move_arr))
     return label_arr[:minimum], pose_arr[:minimum], move_arr[:minimum]
@@ -57,7 +68,7 @@ def find_negatives(label_batch):
         for label in label_seq:
             if not label:
                 i += 1
-        if i > THRESHOLD:
+        if i >= THRESHOLD:
             negatives.append(idx)
     return negatives
 

@@ -28,9 +28,10 @@ class MultiSequenceDataset(Dataset):
         return self.size
 
     def __getitem__(self, i): 
-        if i <= self.size:
+        if i < self.size:
             dataset_index, index = self.__find_index(i)
             x = self.datasets[dataset_index][index:index+self.sequence_length, :]
         else:
-            x = torch.Tensor(0,self.datasets[0].shape[1])
+            raise StopIteration()
+            # x = torch.Tensor(0,self.datasets[0].shape[1])
         return x
