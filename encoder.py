@@ -1,0 +1,38 @@
+import torch
+import os
+from cocoa_trainer import CocoaTrainer
+from config import SEQUENCE_LENGTH
+from utils import fetch_data
+
+TAU = 5
+LAM = 2
+EPOCHS = 30
+BATCH_SIZE = 50
+BAlANCE_CLASSES = False
+
+trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
+
+# Device agnostic
+device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+# Get data
+BASE_DIRECTORY = "aligned_data"
+ALL_DATES = os.listdir(BASE_DIRECTORY)
+aligned_data = fetch_data(BASE_DIRECTORY, ALL_DATES)
+
+patients = set()
+removed_patients = ["040520231330"]
+
+DATE_IDX = 12
+PATIENT_NAME_IDX = 17
+for key in aligned_data.keys():
+    if key[:DATE_IDX] not in removed_patients:
+        patients.add(key[:PATIENT_NAME_IDX])
+
+for patient in patients:
+    trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
+                     aligned_data[f"{patient}_label_arr"])
+
+if BAlANCE_CLASSES:
+    trainer.balance_data()
+trainer.train(EPOCHS, BATCH_SIZE)

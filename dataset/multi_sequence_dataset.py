@@ -21,7 +21,7 @@ class MultiSequenceDataset(Dataset):
                 dataset_index = i
                 tensor_index = index - offset
                 return dataset_index, tensor_index
-            offset += j
+            offset = j
         return None
 
     def __len__(self):

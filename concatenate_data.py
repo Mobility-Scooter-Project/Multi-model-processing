@@ -1,8 +1,14 @@
 import os
 import pandas as pd
 import numpy as np
-from utils import match_length, change_labels_to_bool
 from config import DEFLATION_FACTOR
+
+def match_length(label_arr, pose_arr, move_arr):
+    minimum = min(len(label_arr), len(pose_arr), len(move_arr))
+    return label_arr[:minimum], pose_arr[:minimum], move_arr[:minimum]
+
+def change_labels_to_bool(label_arr):
+    return np.array([[True] if "Stable" in x else [False] for x in label_arr])
 
 def concatenate_csv_files(directory_path):
     csv_files = [os.path.join(directory_path, f) for f in os.listdir(directory_path) if f.endswith('.csv')]
@@ -40,7 +46,7 @@ def process_data_for_patient(base_dir):
     # process move and the rest
     move_arr = None
     if os.path.exists(base_dir) and os.path.isdir(base_dir):
-        move_files = [f for f in os.listdir(base_dir) if os.path.isfile(os.path.join(base_dir, f)) and f.endswith('.csv') and 'Run' in f]
+        move_files = [f for f in os.listdir(base_dir) if os.path.isfile(os.path.join(base_dir, f)) and f.endswith('.csv') and 'run' in f.lower()]
         if move_files:
             move_file_path = os.path.join(base_dir, move_files[0])
             move_arr = np.loadtxt(move_file_path, delimiter=",", usecols=range(1, 7), dtype="float32", skiprows=1)

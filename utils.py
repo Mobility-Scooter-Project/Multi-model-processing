@@ -1,10 +1,12 @@
 import numpy as np
 import random
+import os
 from sequence_dataset import SequenceDataset
+from concatenate_data import process_data_for_patient
 from sklearn.model_selection import train_test_split
 from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
 
-def fetch_data(pose_path, move_path, label_path, sequence_len, test_size=TEST_SIZE, deflation_factor=DEFLATION_FACTOR):
+def fetch_data_old(pose_path, move_path, label_path, sequence_len, test_size=TEST_SIZE, deflation_factor=DEFLATION_FACTOR):
     label_arr = np.loadtxt(label_path,
                     delimiter=",", dtype=str, skiprows=1)
     label_arr = label_arr[::deflation_factor]
@@ -43,6 +45,29 @@ def fetch_data(pose_path, move_path, label_path, sequence_len, test_size=TEST_SI
     move_train_dataset, move_test_dataset = \
         train_test_split(move_dataset, test_size=test_size, random_state=RANDOM_SEED)
     return pose_train_dataset, pose_test_dataset, move_train_dataset, move_test_dataset, label_train_dataset, label_test_dataset
+
+def fetch_data(base_directory, all_dates):
+    aligned_data = {}
+    for date in all_dates:
+        date_dir = os.path.join(base_directory, date)
+
+        patients = []
+        if os.path.isdir(date_dir) and not date.endswith('.DS_Store'):
+            patients = os.listdir(date_dir)
+
+        for patient in patients:
+            patient_dir = os.path.join(date_dir, patient)
+            if os.path.isdir(patient_dir) and not patient.endswith('.DS_Store'):
+                label_data, pose_data, movement_data = process_data_for_patient(patient_dir)
+
+                date_patient_key_label = f"{date}_{patient}_label_arr"
+                date_patient_key_pose = f"{date}_{patient}_pose_arr"
+                date_patient_key_move = f"{date}_{patient}_move_arr"
+
+                aligned_data[date_patient_key_label] = label_data
+                aligned_data[date_patient_key_pose] = pose_data
+                aligned_data[date_patient_key_move] = movement_data
+    return aligned_data
 
 def balance_data(poseSeqs, moveSeqs, labelSeqs):
     random.seed(RANDOM_SEED)
