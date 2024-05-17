@@ -6,46 +6,6 @@ from concatenate_data import process_data_for_patient
 from sklearn.model_selection import train_test_split
 from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
 
-def fetch_data_old(pose_path, move_path, label_path, sequence_len, test_size=TEST_SIZE, deflation_factor=DEFLATION_FACTOR):
-    label_arr = np.loadtxt(label_path,
-                    delimiter=",", dtype=str, skiprows=1)
-    label_arr = label_arr[::deflation_factor]
-    label_arr = change_labels_to_bool(label_arr)
-
-    pose_arr = np.loadtxt(pose_path,
-                    delimiter=",", dtype="float32", skiprows=1)
-    pose_arr = pose_arr[::deflation_factor]
-
-    move_arr = np.loadtxt(move_path,
-                    delimiter=",", usecols=range(1,7), dtype="float32", skiprows=1)
-
-    label_arr, pose_arr, move_arr = match_length(label_arr, pose_arr, move_arr)
-    label_dataset = SequenceDataset( 
-        label_arr,
-        sequence_length=sequence_len
-    )
-
-    pose_dataset = SequenceDataset( 
-        pose_arr,
-        sequence_length=sequence_len
-    )
-
-    move_dataset = SequenceDataset( 
-        move_arr,
-        sequence_length=sequence_len
-    )
-
-    # Create train-test split
-    label_train_dataset, label_test_dataset = \
-        train_test_split(label_dataset, test_size=test_size, random_state=RANDOM_SEED)
-
-    pose_train_dataset, pose_test_dataset = \
-        train_test_split(pose_dataset, test_size=test_size, random_state=RANDOM_SEED)
-
-    move_train_dataset, move_test_dataset = \
-        train_test_split(move_dataset, test_size=test_size, random_state=RANDOM_SEED)
-    return pose_train_dataset, pose_test_dataset, move_train_dataset, move_test_dataset, label_train_dataset, label_test_dataset
-
 def fetch_data(base_directory, all_dates):
     aligned_data = {}
     for date in all_dates:

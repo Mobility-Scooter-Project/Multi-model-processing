@@ -5,12 +5,6 @@ from utils import fetch_data
 from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 
-# Device agnostic
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-
-POSE_PATH = "aligned_data/041720231030/P002/Yolov7/Front_full.csv"
-MOVE_PATH = "aligned_data/041720231030/P002/April_17_Run_1.csv"
-LABEL_PATH = "aligned_data/041720231030/P002/Labels/Front_full_labels.csv"
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
 EPOCHS = 20
