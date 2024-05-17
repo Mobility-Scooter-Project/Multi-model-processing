@@ -8,12 +8,9 @@ TAU = 5
 LAM = 2
 EPOCHS = 30
 BATCH_SIZE = 50
-BAlANCE_CLASSES = False
+BALANCE_DATA = False
 
 trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
-
-# Device agnostic
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
@@ -33,6 +30,6 @@ for patient in patients:
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
-if BAlANCE_CLASSES:
+if BALANCE_DATA:
     trainer.balance_data()
 trainer.train(EPOCHS, BATCH_SIZE)

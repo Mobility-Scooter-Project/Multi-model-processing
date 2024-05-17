@@ -11,10 +11,6 @@ from cocoa import Cocoa
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-# things to write to csv: 
-# epoch state 
-# final loss and accuracy (w/ tau, lam, seq_len, batch_size, threshold, embedding dim, frozen / skip_batches)
-
 class CocoaTrainer():
     def __init__(self, seq_len, tau, lam) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
@@ -41,10 +37,9 @@ class CocoaTrainer():
         torch.save(self.model.state_dict(), path)
 
     def skip_nonneg_batches(self, bool):
-        self.skip_nonneg_batches = bool
+        self.skip_batches = bool
 
     def train(self, epochs, batch_size):
-        print(f"Size: {len(self.pose_data)}")
         label_train_dataset, label_test_dataset = \
             train_test_split(self.label_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
 

@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 import torch
+import os
 from utils import fetch_data
 from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 from cocoa_classifier_trainer import CocoaClassifierTrainer
@@ -16,13 +17,30 @@ EPOCHS = 20
 EMBEDDING_DIM = 16
 MODEL_PATH = "./models/cocoa_encoder"
 FREEZE_STATE = False
-
-
-pose_train_dataset, pose_test_dataset, move_train_dataset, move_test_dataset, label_train_dataset, label_test_dataset = \
-    fetch_data(POSE_PATH, MOVE_PATH, LABEL_PATH, SEQUENCE_LENGTH, TEST_SIZE)
+BALANCE_DATA = True
 
 trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM)
+
+# Get data
+BASE_DIRECTORY = "aligned_data"
+ALL_DATES = os.listdir(BASE_DIRECTORY)
+aligned_data = fetch_data(BASE_DIRECTORY, ALL_DATES)
+
+patients = set()
+removed_patients = ["040520231330"]
+
+DATE_IDX = 12
+PATIENT_NAME_IDX = 17
+for key in aligned_data.keys():
+    if key[:DATE_IDX] not in removed_patients:
+        patients.add(key[:PATIENT_NAME_IDX])
+
+for patient in patients:
+    trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
+                     aligned_data[f"{patient}_label_arr"])
+
 trainer.load_encoder(MODEL_PATH)
 trainer.freeze_encoder(FREEZE_STATE)
-trainer.train(EPOCHS, label_train_dataset, label_test_dataset, pose_train_dataset, 
-              pose_test_dataset, move_train_dataset, move_test_dataset)
+if BALANCE_DATA:
+    trainer.balance_data()
+trainer.train(EPOCHS, BATCH_SIZE)

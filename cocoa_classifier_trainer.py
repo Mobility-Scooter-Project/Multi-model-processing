@@ -1,31 +1,59 @@
 import torch
+from sklearn.model_selection import train_test_split
 import numpy as np
 from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from cocoa_classifier import CocoaClassifier
-from config import RANDOM_SEED, LEARNING_RATE
-from utils import find_negatives, get_seq_label
+from dataset import multi_sequence_dataset as data
+from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE
+from utils import balance_data, find_negatives, get_seq_label
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaClassifierTrainer():
     def __init__(self, seq_len, batch_size, x_n_features, y_n_features, embedding_dim=16):
+        self.pose_data = data.MultiSequenceDataset(seq_len)
+        self.move_data = data.MultiSequenceDataset(seq_len)
+        self.label_data = data.MultiSequenceDataset(seq_len)
         self.model = CocoaClassifier(seq_len, x_n_features, y_n_features, embedding_dim)
+        self.model.to(device)
         self.loss_fn = nn.BCELoss().to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)
         self.batch_size = batch_size
+        self.skip_batches = False
     
+    def add_data(self, pose_arr, move_arr, label_arr):
+        self.pose_data.add(pose_arr)
+        self.move_data.add(move_arr)
+        self.label_data.add(label_arr)
+
     def load_encoder(self, PATH):
         self.model.load_encoder(PATH)
 
     def freeze_encoder(self, state):
         self.model.freeze_encoder(state)
+
+    def skip_nonneg_batches(self, bool):
+        self.skip_batches = bool
+
+    def balance_data(self):
+        self.pose_data, self.move_data, self.label_data = balance_data(self.pose_data, self.move_data, self.label_data)
     
     def get_model(self):
         return self.model
+    
+    def save_model(self, path):
+        torch.save(self.model.state_dict(), path)
 
-    def train(self, epochs, label_train_dataset, label_test_dataset, pose_train_dataset, pose_test_dataset, 
-                move_train_dataset, move_test_dataset):
+    def train(self, epochs, batch_size):
+        label_train_dataset, label_test_dataset = \
+            train_test_split(self.label_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+
+        pose_train_dataset, pose_test_dataset = \
+            train_test_split(self.pose_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+
+        move_train_dataset, move_test_dataset = \
+            train_test_split(self.move_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
         G = torch.Generator()
         G.manual_seed(RANDOM_SEED)
         train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
@@ -38,17 +66,17 @@ class CocoaClassifierTrainer():
             train_sampler_save = list(train_sampler)
             test_sampler_save = list(test_sampler)
 
-            label_train_loader = DataLoader(label_train_dataset, batch_size=self.batch_size, sampler=train_sampler_save)
-            pose_train_loader = DataLoader(pose_train_dataset, batch_size=self.batch_size, sampler=train_sampler_save)
-            move_train_loader = DataLoader(move_train_dataset, batch_size=self.batch_size, sampler=train_sampler_save)
-            label_test_loader = DataLoader(label_test_dataset, batch_size=self.batch_size, sampler=test_sampler_save)
-            pose_test_loader = DataLoader(pose_test_dataset, batch_size=self.batch_size, sampler=test_sampler_save)
-            move_test_loader = DataLoader(move_test_dataset, batch_size=self.batch_size, sampler=test_sampler_save)
+            label_train_loader = DataLoader(label_train_dataset, batch_size=batch_size, sampler=train_sampler_save)
+            pose_train_loader = DataLoader(pose_train_dataset, batch_size=batch_size, sampler=train_sampler_save)
+            move_train_loader = DataLoader(move_train_dataset, batch_size=batch_size, sampler=train_sampler_save)
+            label_test_loader = DataLoader(label_test_dataset, batch_size=batch_size, sampler=test_sampler_save)
+            pose_test_loader = DataLoader(pose_test_dataset, batch_size=batch_size, sampler=test_sampler_save)
+            move_test_loader = DataLoader(move_test_dataset, batch_size=batch_size, sampler=test_sampler_save)
 
             for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
                 # Skip batches without negative pairs
-                # if not find_negatives(label_batch):
-                #     continue
+                if not find_negatives(label_batch) and self.skip_batches:
+                    continue
                 for pose_true, move_true, label_true in zip(pose_batch, move_batch, label_batch):
                     pose_true, move_true, label_true = pose_true.to(device), move_true.to(device), label_true.to(device)
                     pred = model(pose_true, move_true)
@@ -66,8 +94,9 @@ class CocoaClassifierTrainer():
             model = self.model.eval()
             with torch.no_grad():
                 for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
-                    # if not find_negatives(label_test_batch):
-                    #     continue
+                    # Skip batches without negative pairs
+                    if not find_negatives(label_test_batch) and self.skip_batches:
+                        continue
                     for pose_true, move_true, label_true in zip(pose_test_batch, move_test_batch, label_test_batch):
                         pose_true, move_true = pose_true.to(device), move_true.to(device)
                         pred = model(pose_true, move_true)
