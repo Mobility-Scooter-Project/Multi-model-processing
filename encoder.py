@@ -9,6 +9,7 @@ LAM = 2
 EPOCHS = 30
 BATCH_SIZE = 50
 BALANCE_DATA = False
+MODEL_PATH = "./models/cocoa_encoder"
 
 trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
 
@@ -33,3 +34,4 @@ for patient in patients:
 if BALANCE_DATA:
     trainer.balance_data()
 trainer.train(EPOCHS, BATCH_SIZE)
+trainer.save_model(MODEL_PATH)
