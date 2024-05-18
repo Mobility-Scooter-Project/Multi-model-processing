@@ -1,2 +1,0 @@
-segment start at 99 sec for video 99 * 30 = 2970th row
-segment start at 120 sec for motion

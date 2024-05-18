@@ -1,2 +1,0 @@
-segment start at 40 sec for video 40 * 30 = 1200th
-segment start at 53 sec for motion
