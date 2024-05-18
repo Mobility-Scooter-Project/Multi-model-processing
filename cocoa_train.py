@@ -154,5 +154,5 @@ train_model(model, TAU, LAM, EPOCHS, label_train_dataset, label_test_dataset, po
                 move_train_dataset, move_test_dataset)
 
 # Save model
-PATH = "./models/cocoa_encoder"
-torch.save(model.state_dict(), PATH)
+# PATH = "./models/cocoa_encoder"
+# torch.save(model.state_dict(), PATH)
