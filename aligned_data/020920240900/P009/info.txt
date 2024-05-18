@@ -1,2 +1,2 @@
-segment start at 115 sec for video
-segment start at 5 sec for motion
+segment start at 103 sec for video 103 * 30f = 3090th row
+segment start at 123 sec for motion

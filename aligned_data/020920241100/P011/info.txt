@@ -1,2 +1,2 @@
-segment start at 33 sec for video
-segment start at 39 sec for motion
+segment start at 33 sec for video 33 * 30 = 990th
+segment start at 39 sec for motion 198th
