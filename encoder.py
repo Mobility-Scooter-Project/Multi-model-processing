@@ -1,19 +1,17 @@
-from sklearn.model_selection import train_test_split
 import torch
 import os
+from cocoa_trainer import CocoaTrainer
+from config import SEQUENCE_LENGTH
 from utils import fetch_data
-from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
-from cocoa_classifier_trainer import CocoaClassifierTrainer
 
-SEQUENCE_LENGTH = 6
+TAU = 5
+LAM = 2
+EPOCHS = 30
 BATCH_SIZE = 50
-EPOCHS = 20
-EMBEDDING_DIM = 16
-MODEL_PATH = "./models/cocoa_encoder"
-FREEZE_STATE = False
 BALANCE_DATA = True
+MODEL_PATH = "./models/cocoa_encoder"
 
-trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM)
+trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
@@ -33,8 +31,7 @@ for patient in patients:
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
-trainer.load_encoder(MODEL_PATH)
-trainer.freeze_encoder(FREEZE_STATE)
 if BALANCE_DATA:
     trainer.balance_data()
 trainer.train(EPOCHS, BATCH_SIZE)
+trainer.save_model(MODEL_PATH)
