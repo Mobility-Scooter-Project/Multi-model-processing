@@ -21,13 +21,14 @@ ALL_DATES = os.listdir(BASE_DIRECTORY)
 aligned_data = fetch_data(BASE_DIRECTORY, ALL_DATES)
 
 patients = set()
-removed_patients = ["040520231330"]
+removed_patients = ["040520231330","030820241000"]
 
 DATE_IDX = 12
 PATIENT_NAME_IDX = 17
 for key in aligned_data.keys():
     if key[:DATE_IDX] not in removed_patients:
         patients.add(key[:PATIENT_NAME_IDX])
+print(patients)
 
 for patient in patients:
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 

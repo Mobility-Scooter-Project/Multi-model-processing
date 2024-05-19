@@ -46,7 +46,7 @@ def process_data_for_patient(base_dir):
     # process move and the rest
     move_arr = None
     if os.path.exists(base_dir) and os.path.isdir(base_dir):
-        move_files = [f for f in os.listdir(base_dir) if os.path.isfile(os.path.join(base_dir, f)) and f.endswith('.csv') and 'run' in f.lower()]
+        move_files = [f for f in os.listdir(base_dir) if os.path.isfile(os.path.join(base_dir, f)) and f.endswith('.csv')]
         if move_files:
             move_file_path = os.path.join(base_dir, move_files[0])
             move_arr = np.loadtxt(move_file_path, delimiter=",", usecols=range(1, 7), dtype="float32", skiprows=1)
