@@ -21,7 +21,7 @@ ALL_DATES = os.listdir(BASE_DIRECTORY)
 aligned_data = fetch_data(BASE_DIRECTORY, ALL_DATES)
 
 patients = set()
-removed_patients = ["040520231330","030820241000"]
+removed_patients = ["040520231330","030820241000","030820241100"]
 
 DATE_IDX = 12
 PATIENT_NAME_IDX = 17
