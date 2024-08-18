@@ -6,12 +6,14 @@ from torch.utils.data import DataLoader, RandomSampler
 from cocoa_classifier import CocoaClassifier
 from dataset import multi_sequence_dataset as data
 from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE
+from logger import Logger
 from utils import balance_data, find_negatives, get_seq_label
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
+
 class CocoaClassifierTrainer():
-    def __init__(self, seq_len, batch_size, x_n_features, y_n_features, embedding_dim=16):
+    def __init__(self, seq_len, batch_size, x_n_features, y_n_features, embedding_dim=16, logger=None):
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
@@ -21,7 +23,8 @@ class CocoaClassifierTrainer():
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)
         self.batch_size = batch_size
         self.skip_batches = False
-    
+        self.logger = logger
+
     def add_data(self, pose_arr, move_arr, label_arr):
         self.pose_data.add(pose_arr)
         self.move_data.add(move_arr)
@@ -38,10 +41,10 @@ class CocoaClassifierTrainer():
 
     def balance_data(self):
         self.pose_data, self.move_data, self.label_data = balance_data(self.pose_data, self.move_data, self.label_data)
-    
+
     def get_model(self):
         return self.model
-    
+
     def save_model(self, path):
         torch.save(self.model.state_dict(), path)
 
@@ -73,7 +76,8 @@ class CocoaClassifierTrainer():
             pose_test_loader = DataLoader(pose_test_dataset, batch_size=batch_size, sampler=test_sampler_save)
             move_test_loader = DataLoader(move_test_dataset, batch_size=batch_size, sampler=test_sampler_save)
 
-            for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader), iter(move_train_loader)):
+            for label_batch, pose_batch, move_batch in zip(iter(label_train_loader), iter(pose_train_loader),
+                                                           iter(move_train_loader)):
                 # Skip batches without negative pairs
                 if not find_negatives(label_batch) and self.skip_batches:
                     continue
@@ -93,7 +97,9 @@ class CocoaClassifierTrainer():
             test_accs = []
             model = self.model.eval()
             with torch.no_grad():
-                for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader), iter(pose_test_loader), iter(move_test_loader)):
+                for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader),
+                                                                              iter(pose_test_loader),
+                                                                              iter(move_test_loader)):
                     # Skip batches without negative pairs
                     if not find_negatives(label_test_batch) and self.skip_batches:
                         continue
@@ -109,3 +115,7 @@ class CocoaClassifierTrainer():
             test_loss = np.mean(test_losses)
             test_acc = np.mean(test_accs)
             print(f"Epoch {epoch}: train loss {train_loss} | train acc {train_acc}, test loss {test_loss} | test acc {test_acc}")
+
+            self.logger.log_training_output(
+                f"Epoch {epoch + 1}: train loss {train_loss:.4f} | train acc {train_acc:.4f} | test loss {test_loss:.4f} | test acc {test_acc:.4f}")
+        self.logger.end_logging()
