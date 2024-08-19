@@ -8,6 +8,8 @@ from dataset import multi_sequence_dataset as data
 from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE
 from logger import Logger
 from utils import balance_data, find_negatives, get_seq_label
+import pandas as pd
+import os
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -48,6 +50,15 @@ class CocoaClassifierTrainer():
     def save_model(self, path):
         torch.save(self.model.state_dict(), path)
 
+    def save_roc_data_to_csv(self, true_labels, pred_probs, model_name, subfolder="roc_data"):
+        if not os.path.exists(subfolder):
+            os.makedirs(subfolder)
+        file_path = os.path.join(subfolder, f'{model_name}_roc_data.csv')
+        data = {'TrueLabels': true_labels, 'PredProbs': pred_probs}
+        df = pd.DataFrame(data)
+        df.to_csv(file_path, index=False)
+        print(f"ROC data saved to {file_path}")
+
     def train(self, epochs, batch_size):
         label_train_dataset, label_test_dataset = \
             train_test_split(self.label_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
@@ -61,6 +72,9 @@ class CocoaClassifierTrainer():
         G.manual_seed(RANDOM_SEED)
         train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
         test_sampler = RandomSampler(data_source=label_test_dataset, generator=G)
+
+        all_true_labels = []
+        all_pred_probs = []
 
         for epoch in range(0, epochs):
             model = self.model.train()
@@ -110,6 +124,10 @@ class CocoaClassifierTrainer():
                         loss = self.loss_fn(pred, true)
                         test_accs.append(torch.round(pred[0]) == true[0])
                         test_losses.append(loss.item())
+
+                        all_true_labels.append(true.item())
+                        all_pred_probs.append(pred.item())
+
             train_loss = np.mean(train_losses)
             train_acc = np.mean(train_accs)
             test_loss = np.mean(test_losses)
@@ -119,3 +137,4 @@ class CocoaClassifierTrainer():
             self.logger.log_training_output(
                 f"Epoch {epoch + 1}: train loss {train_loss:.4f} | train acc {train_acc:.4f} | test loss {test_loss:.4f} | test acc {test_acc:.4f}")
         self.logger.end_logging()
+        self.save_roc_data_to_csv(all_true_labels, all_pred_probs, "trained_with_20_epochs", subfolder="roc_data")

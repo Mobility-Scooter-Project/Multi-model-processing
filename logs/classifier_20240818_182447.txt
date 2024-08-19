@@ -1,0 +1,15 @@
+Logging started at 2024-08-18 18:24:47.891962
+
+Hyperparameters:
+SEQUENCE_LENGTH: 6
+BATCH_SIZE: 50
+EPOCHS: 5
+EMBEDDING_DIM: 16
+FREEZE_STATE: False
+Epoch 1: train loss 0.5417 | train acc 0.7407 | test loss 0.4967 | test acc 0.7947
+Epoch 2: train loss 0.4152 | train acc 0.8393 | test loss 0.4367 | test acc 0.8340
+Epoch 3: train loss 0.4037 | train acc 0.8411 | test loss 0.4303 | test acc 0.8312
+Epoch 4: train loss 0.3973 | train acc 0.8448 | test loss 0.4282 | test acc 0.8284
+Epoch 5: train loss 0.3901 | train acc 0.8445 | test loss 0.4141 | test acc 0.8312
+
+Logging ended at 2024-08-18 18:26:04.912601
