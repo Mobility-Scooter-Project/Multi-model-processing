@@ -8,15 +8,17 @@ from utils import balance_data, find_negatives
 from dataset import multi_sequence_dataset as data
 from cocoa_loss import CocoaLoss
 from cocoa import Cocoa
+from cocoa_transformer import CocoaTransformer
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaTrainer():
-    def __init__(self, seq_len, tau, lam) -> None:
+    def __init__(self, isTransformerBased, seq_len, tau, lam) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
-        self.model = Cocoa(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+        self.model = CocoaTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM) if isTransformerBased \
+            else Cocoa(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
         self.model.to(device)
         self.loss_fn = CocoaLoss(tau, lam).to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)

@@ -1,7 +1,7 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import SEQUENCE_LENGTH
+from config import SEQUENCE_LENGTH, IS_TRANSFORMER_BASED
 from utils import fetch_data
 
 TAU = 5
@@ -11,7 +11,7 @@ BATCH_SIZE = 50
 BALANCE_DATA = False
 MODEL_PATH = "./models/cocoa_encoder"
 
-trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
+trainer = CocoaTrainer(IS_TRANSFORMER_BASED, SEQUENCE_LENGTH, TAU, LAM)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"

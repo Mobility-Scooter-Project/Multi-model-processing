@@ -14,6 +14,7 @@ class CocoaLoss(nn.Module):
         y_neg_error = self.__calc_neg_error(y_pred_batch, neg_idxs)
         return  pos_error+self.lam*(x_neg_error + y_neg_error)
 
+    # Pos error intution: Same time sequence should have similar embedding for both modalities
     def __calc_pos_error(self, x_pred_batch, y_pred_batch):
         pos_error = 0 
         for pose, move in zip(x_pred_batch, y_pred_batch):
@@ -24,6 +25,7 @@ class CocoaLoss(nn.Module):
             pos_error = torch.add(pos_error, corr)
         return pos_error / len(x_pred_batch)
     
+    # Neg pairs: every combination of pairs between negative and positive sequences
     def __find_negatives(self, label_batch):
         THRESHOLD = 1
         negatives = []
@@ -36,6 +38,7 @@ class CocoaLoss(nn.Module):
                 negatives.append(idx)
         return negatives
 
+    # Neg error intuition: Unstable and stable pairs within the same modality should be as different as possible
     def __calc_neg_error(self, pred_batch, neg_indexs):
         neg_error = 0
         if not neg_indexs:

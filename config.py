@@ -10,3 +10,4 @@ TEST_SIZE = 0.15
 LEARNING_RATE = 1e-4
 DEFLATION_FACTOR = 18 # Video frames to movement frames ratio is 18:1 
 THRESHOLD = 2
+IS_TRANSFORMER_BASED = True
