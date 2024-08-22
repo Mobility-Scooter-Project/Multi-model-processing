@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from cocoa import Cocoa
+from cocoa_lstm import Cocoa
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 

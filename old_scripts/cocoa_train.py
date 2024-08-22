@@ -7,7 +7,7 @@ from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from sequence_dataset import SequenceDataset
 from cocoa_loss import CocoaLoss
-from cocoa import Cocoa
+from cocoa_lstm import Cocoa
 from concatenate_data import process_data_for_patient
 from utils import find_negatives
 from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE

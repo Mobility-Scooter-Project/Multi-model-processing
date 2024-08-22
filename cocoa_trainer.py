@@ -3,22 +3,30 @@ from sklearn.model_selection import train_test_split
 from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 import numpy as np
-from config import RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, TEST_SIZE
+from config import RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, TEST_SIZE, encoder_type
 from utils import balance_data, find_negatives
 from dataset import multi_sequence_dataset as data
 from cocoa_loss import CocoaLoss
-from cocoa import Cocoa
-from cocoa_transformer import CocoaTransformer
+from cocoa_lstm import CocoaLstm
+from cocoa_lstm_transformer import CocoaLstmTransformer
+from cocoa_linear_transformer import CocoaLinearTransformer
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaTrainer():
-    def __init__(self, isTransformerBased, seq_len, tau, lam) -> None:
+    def __init__(self, encoder_type, seq_len, tau, lam) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
-        self.model = CocoaTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM) if isTransformerBased \
-            else Cocoa(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+        match encoder_type:
+            case encoder_type.LSTM:
+                self.model = CocoaLstm(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+            case encoder_type.LSTM_TRANSFORMER:
+                self.model = CocoaLstmTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+            case encoder_type.LINEAR_TRANSFORMER:
+                self.model = CocoaLinearTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+            case _:
+                raise Exception("Invalid encoder type")
         self.model.to(device)
         self.loss_fn = CocoaLoss(tau, lam).to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)

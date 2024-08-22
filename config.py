@@ -1,5 +1,9 @@
+from enum import Enum
+
 # Current implementation deflates the number of pose to match the number of move points
 # Another implementation may be to inflate the number of move sequences to match number of pose sequences
+encoder_type = Enum('EncoderType', ['LINEAR_TRANSFORMER', 'LSTM_TRANSFORMER', 'LSTM'])
+
 BATCH_SIZE = 32
 SEQUENCE_LENGTH = 6
 EMBEDDING_DIM = 16
@@ -10,4 +14,8 @@ TEST_SIZE = 0.15
 LEARNING_RATE = 1e-4
 DEFLATION_FACTOR = 18 # Video frames to movement frames ratio is 18:1 
 THRESHOLD = 2
-IS_TRANSFORMER_BASED = True
+ENCODER_TYPE = encoder_type.LINEAR_TRANSFORMER
+
+# Transformer Configs (WIP)
+N_HEAD = 8 
+N_LAYERS = 6
