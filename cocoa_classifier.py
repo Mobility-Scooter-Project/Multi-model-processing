@@ -25,15 +25,15 @@ class ConcatLinear(nn.Module):
     return xy
 
 class CocoaClassifier(nn.Module):
-  def __init__(self, seq_len, x_n_features, y_n_features, encoder_type, embedding_dim=16):
+  def __init__(self, seq_len, x_n_features, y_n_features, encoder_type, embedding_dim, nhead, nlayers):
     super(CocoaClassifier, self).__init__()
     match encoder_type:
       case encoder_type.LSTM:
-          self.cocoa = CocoaLstm(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+          self.cocoa = CocoaLstm(seq_len, x_n_features, y_n_features, embedding_dim)
       case encoder_type.LSTM_TRANSFORMER:
-          self.cocoa = CocoaLstmTransformer(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+          self.cocoa = CocoaLstmTransformer(seq_len, x_n_features, y_n_features, embedding_dim, nhead, nlayers)
       case encoder_type.LINEAR_TRANSFORMER:
-          self.cocoa = CocoaLinearTransformer(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+          self.cocoa = CocoaLinearTransformer(seq_len, x_n_features, y_n_features, embedding_dim, nhead, nlayers)
       case _:
           raise Exception("Invalid encoder type")
     self.cocoa.to(device)

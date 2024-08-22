@@ -15,11 +15,11 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 
 
 class CocoaClassifierTrainer():
-    def __init__(self, seq_len, batch_size, x_n_features, y_n_features, encoder_type, embedding_dim=16, logger=None):
+    def __init__(self, seq_len, batch_size, x_n_features, y_n_features, encoder_type, embedding_dim, nhead=None, nlayers=None, logger=None):
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
-        self.model = CocoaClassifier(seq_len, x_n_features, y_n_features, encoder_type, embedding_dim)
+        self.model = CocoaClassifier(seq_len, x_n_features, y_n_features, encoder_type, embedding_dim, nhead, nlayers)
         self.model.to(device)
         self.loss_fn = nn.BCELoss().to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)

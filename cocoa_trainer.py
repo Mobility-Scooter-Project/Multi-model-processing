@@ -14,17 +14,17 @@ from cocoa_linear_transformer import CocoaLinearTransformer
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaTrainer():
-    def __init__(self, encoder_type, seq_len, tau, lam) -> None:
+    def __init__(self, encoder_type, seq_len, tau, lam, nhead, nlayer) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
         match encoder_type:
             case encoder_type.LSTM:
-                self.model = CocoaLstm(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+                self.model = CocoaLstm(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM)
             case encoder_type.LSTM_TRANSFORMER:
-                self.model = CocoaLstmTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+                self.model = CocoaLstmTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, nhead, nlayer)
             case encoder_type.LINEAR_TRANSFORMER:
-                self.model = CocoaLinearTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+                self.model = CocoaLinearTransformer(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, nhead, nlayer)
             case _:
                 raise Exception("Invalid encoder type")
         self.model.to(device)

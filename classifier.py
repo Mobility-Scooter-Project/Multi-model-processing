@@ -2,7 +2,8 @@ from sklearn.model_selection import train_test_split
 import torch
 import os
 from utils import fetch_data
-from config import POSE_N_FEATURES, MOVE_N_FEATURES, SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, EMBEDDING_DIM, CLASSIFIER_EPOCHS, BALANCE_CLASSIFIER_DATA, FREEZE_ENCODER_STATE, LOAD_MODEL_PATH, CLASSIFIER_ENCODER_TYPE
+from config import POSE_N_FEATURES, MOVE_N_FEATURES, SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, EMBEDDING_DIM, CLASSIFIER_EPOCHS, BALANCE_CLASSIFIER_DATA, \
+                   FREEZE_ENCODER_STATE, LOAD_MODEL_PATH, CLASSIFIER_ENCODER_TYPE, N_HEAD, N_LAYERS
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 from logger import Logger
 
@@ -18,7 +19,7 @@ logger = Logger()
 log_file_path = logger.start_logging(file_name_prefix="classifier")
 logger.log_hyperparameters(hyperparams)
 
-trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, CLASSIFIER_ENCODER_TYPE, EMBEDDING_DIM, logger)
+trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, CLASSIFIER_ENCODER_TYPE, EMBEDDING_DIM, N_HEAD, N_LAYERS, logger)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
