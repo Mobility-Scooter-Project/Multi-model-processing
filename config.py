@@ -27,7 +27,7 @@ SAVE_MODEL_PATH = "./models/cocoa_encoder"
 # Transformer Configs
 # NOTE: This number modifies the the classifier and encoder model 
 #       When loading encoder for classifier, ensure that these values match the loaded model
-N_HEAD = 8 
+N_HEAD = 8
 N_LAYER = 6
 
 # Classifier Hyper-parameters 
