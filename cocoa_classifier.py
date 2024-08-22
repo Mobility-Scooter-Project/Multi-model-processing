@@ -1,6 +1,9 @@
 import torch
 import torch.nn as nn
-from cocoa_lstm import Cocoa
+from config import encoder_type
+from cocoa_lstm import CocoaLstm
+from cocoa_lstm_transformer import CocoaLstmTransformer
+from cocoa_linear_transformer import CocoaLinearTransformer
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
@@ -22,9 +25,18 @@ class ConcatLinear(nn.Module):
     return xy
 
 class CocoaClassifier(nn.Module):
-  def __init__(self, seq_len, x_n_features, y_n_features, embedding_dim=16):
+  def __init__(self, seq_len, x_n_features, y_n_features, encoder_type, embedding_dim=16):
     super(CocoaClassifier, self).__init__()
-    self.cocoa = Cocoa(seq_len, x_n_features, y_n_features, embedding_dim).to(device)
+    match encoder_type:
+      case encoder_type.LSTM:
+          self.cocoa = CocoaLstm(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+      case encoder_type.LSTM_TRANSFORMER:
+          self.cocoa = CocoaLstmTransformer(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+      case encoder_type.LINEAR_TRANSFORMER:
+          self.cocoa = CocoaLinearTransformer(seq_len, x_n_features, y_n_features, embedding_dim=embedding_dim)
+      case _:
+          raise Exception("Invalid encoder type")
+    self.cocoa.to(device)
     concat_features = embedding_dim*2
     self.concatLinear = ConcatLinear(embedding_dim, embedding_dim, out_features=concat_features)
     self.relu = nn.ReLU()

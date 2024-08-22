@@ -1,15 +1,8 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import SEQUENCE_LENGTH, ENCODER_TYPE
+from config import SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH
 from utils import fetch_data
-
-TAU = 5
-LAM = 2
-EPOCHS = 30
-BATCH_SIZE = 50
-BALANCE_DATA = False
-MODEL_PATH = "./models/cocoa_encoder"
 
 trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM)
 
@@ -31,7 +24,7 @@ for patient in patients:
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
-if BALANCE_DATA:
+if BALANCE_ENCODER_DATA:
     trainer.balance_data()
-trainer.train(EPOCHS, BATCH_SIZE)
-trainer.save_model(MODEL_PATH)
+trainer.train(ENCODER_EPOCHS, ENCODER_BATCH_SIZE)
+trainer.save_model(SAVE_MODEL_PATH)
