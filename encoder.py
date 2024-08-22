@@ -1,10 +1,10 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYERS
+from config import SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYER
 from utils import fetch_data
 
-trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM, N_HEAD, N_LAYERS)
+trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM, N_HEAD, N_LAYER)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"

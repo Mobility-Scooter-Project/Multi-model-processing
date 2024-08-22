@@ -28,7 +28,7 @@ SAVE_MODEL_PATH = "./models/cocoa_encoder"
 # NOTE: This number modifies the the classifier and encoder model 
 #       When loading encoder for classifier, ensure that these values match the loaded model
 N_HEAD = 8 
-N_LAYERS = 6
+N_LAYER = 6
 
 # Classifier Hyper-parameters 
 CLASSIFIER_ENCODER_TYPE = encoder_type.LSTM
