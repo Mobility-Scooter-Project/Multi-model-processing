@@ -1,0 +1,30 @@
+Logging started at 2024-08-20 21:10:58.456454
+
+Hyperparameters:
+SEQUENCE_LENGTH: 6
+BATCH_SIZE: 50
+EPOCHS: 20
+EMBEDDING_DIM: 16
+FREEZE_STATE: False
+Epoch 1: train loss 0.6520 | train acc 0.6384 | test loss 0.4855 | test acc 0.8186
+Epoch 2: train loss 0.5128 | train acc 0.7785 | test loss 0.4606 | test acc 0.8158
+Epoch 3: train loss 0.5096 | train acc 0.7760 | test loss 0.4581 | test acc 0.8228
+Epoch 4: train loss 0.5046 | train acc 0.7758 | test loss 0.4609 | test acc 0.8284
+Epoch 5: train loss 0.4969 | train acc 0.7810 | test loss 0.4561 | test acc 0.8143
+Epoch 6: train loss 0.4935 | train acc 0.7810 | test loss 0.4473 | test acc 0.8214
+Epoch 7: train loss 0.4885 | train acc 0.7800 | test loss 0.4418 | test acc 0.8200
+Epoch 8: train loss 0.4832 | train acc 0.7795 | test loss 0.4303 | test acc 0.8214
+Epoch 9: train loss 0.4791 | train acc 0.7830 | test loss 0.4256 | test acc 0.8270
+Epoch 10: train loss 0.4768 | train acc 0.7872 | test loss 0.4338 | test acc 0.8214
+Epoch 11: train loss 0.4729 | train acc 0.7939 | test loss 0.4335 | test acc 0.8143
+Epoch 12: train loss 0.4685 | train acc 0.7954 | test loss 0.4232 | test acc 0.8270
+Epoch 13: train loss 0.4666 | train acc 0.7944 | test loss 0.4177 | test acc 0.8284
+Epoch 14: train loss 0.4646 | train acc 0.7976 | test loss 0.4139 | test acc 0.8284
+Epoch 15: train loss 0.4603 | train acc 0.7971 | test loss 0.4104 | test acc 0.8312
+Epoch 16: train loss 0.4588 | train acc 0.7986 | test loss 0.4118 | test acc 0.8284
+Epoch 17: train loss 0.4565 | train acc 0.7956 | test loss 0.4106 | test acc 0.8284
+Epoch 18: train loss 0.4533 | train acc 0.8018 | test loss 0.4066 | test acc 0.8298
+Epoch 19: train loss 0.4508 | train acc 0.7979 | test loss 0.4069 | test acc 0.8284
+Epoch 20: train loss 0.4499 | train acc 0.8021 | test loss 0.4098 | test acc 0.8270
+
+Logging ended at 2024-08-20 21:13:28.678595
