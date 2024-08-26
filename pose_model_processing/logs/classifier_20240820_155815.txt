@@ -1,0 +1,8 @@
+Logging started at 2024-08-20 15:58:15.829395
+
+Hyperparameters:
+SEQUENCE_LENGTH: 6
+BATCH_SIZE: 50
+EPOCHS: 5
+EMBEDDING_DIM: 16
+FREEZE_STATE: False
