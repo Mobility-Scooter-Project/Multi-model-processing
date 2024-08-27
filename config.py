@@ -18,12 +18,12 @@ THRESHOLD = 2
 # Encoder Hyper-parameters
 ENCODER_TYPE = encoder_type.LINEAR_TRANSFORMER
 ENCODER_LEARNING_RATE = 1e-4
-ENCODER_EPOCHS = 30
+ENCODER_EPOCHS = 20
 ENCODER_BATCH_SIZE = 32
 TAU = 5
 LAM = 2
 BALANCE_ENCODER_DATA = True
-SAVE_MODEL_PATH = "./models/cocoa_encoder"
+SAVE_MODEL_PATH = "./models/linear_transformer_e30b32t5l2bt_h8l6_encoder"
 # Transformer Configs
 # NOTE: This number modifies the the classifier and encoder model 
 #       When loading encoder for classifier, ensure that these values match the loaded model
@@ -31,11 +31,11 @@ N_HEAD = 8
 N_LAYER = 6
 
 # Classifier Hyper-parameters 
-CLASSIFIER_ENCODER_TYPE = encoder_type.LSTM
+CLASSIFIER_ENCODER_TYPE = encoder_type.LINEAR_TRANSFORMER
 CLASSIFIER_LEARNING_RATE = 1e-4
 BALANCE_CLASSIFIER_DATA = True
-CLASSIFIER_EPOCHS = 30
+CLASSIFIER_EPOCHS = 20
 CLASSIFIER_BATCH_SIZE = 50
-FREEZE_ENCODER_STATE = True
+FREEZE_ENCODER_STATE = False
 # NOTE: Loaded model needs to be match defined CLASSIFIER_ENCODER_TYPE
-LOAD_MODEL_PATH = "./models/cocoa_encoder"
+LOAD_MODEL_PATH = "./models/linear_transformer_e30b32t5l2bt_encoder"
