@@ -1,0 +1,31 @@
+Logging started at 2024-08-27 02:00:30.032347
+
+Hyperparameters:
+ENCODER_TYPE: EncoderType.LSTM_TRANSFORMER -  lstm_transformer_e30b50t5l2bt_h8l6_encoder
+SEQUENCE_LENGTH: 6
+BATCH_SIZE: 50
+EPOCHS: 20
+EMBEDDING_DIM: 16
+FREEZE_STATE: False
+Epoch 1: train loss 0.6884 | train acc 0.5213 | test loss 0.6929 | test acc 0.4895
+Epoch 2: train loss 0.6879 | train acc 0.5226 | test loss 0.6931 | test acc 0.5105
+Epoch 3: train loss 0.6753 | train acc 0.5442 | test loss 0.6771 | test acc 0.6262
+Epoch 4: train loss 0.6403 | train acc 0.6138 | test loss 0.6899 | test acc 0.5174
+Epoch 5: train loss 0.6883 | train acc 0.5230 | test loss 0.6891 | test acc 0.5174
+Epoch 6: train loss 0.6411 | train acc 0.6152 | test loss 0.4811 | test acc 0.8033
+Epoch 7: train loss 0.4896 | train acc 0.7942 | test loss 0.5227 | test acc 0.7866
+Epoch 8: train loss 0.5166 | train acc 0.7816 | test loss 0.5150 | test acc 0.7880
+Epoch 9: train loss 0.5028 | train acc 0.7902 | test loss 0.5210 | test acc 0.7866
+Epoch 10: train loss 0.5115 | train acc 0.7819 | test loss 0.5183 | test acc 0.7866
+Epoch 11: train loss 0.5006 | train acc 0.7927 | test loss 0.5127 | test acc 0.7880
+Epoch 12: train loss 0.4994 | train acc 0.7932 | test loss 0.5143 | test acc 0.7880
+Epoch 13: train loss 0.5266 | train acc 0.7570 | test loss 0.5940 | test acc 0.7838
+Epoch 14: train loss 0.5043 | train acc 0.7927 | test loss 0.5135 | test acc 0.7880
+Epoch 15: train loss 0.5617 | train acc 0.7262 | test loss 0.5199 | test acc 0.7782
+Epoch 16: train loss 0.5256 | train acc 0.7752 | test loss 0.5489 | test acc 0.7699
+Epoch 17: train loss 0.5229 | train acc 0.7752 | test loss 0.5267 | test acc 0.7768
+Epoch 18: train loss 0.5239 | train acc 0.7730 | test loss 0.5189 | test acc 0.7824
+Epoch 19: train loss 0.5165 | train acc 0.7777 | test loss 0.5184 | test acc 0.7810
+Epoch 20: train loss 0.5150 | train acc 0.7806 | test loss 0.5201 | test acc 0.7810
+
+Logging ended at 2024-08-27 02:20:14.123604

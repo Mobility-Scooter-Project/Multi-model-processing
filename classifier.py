@@ -44,7 +44,7 @@ for patient in sorted(patients):
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
-trainer.load_encoder(LOAD_MODEL_PATH)
+# trainer.load_encoder(LOAD_MODEL_PATH)
 trainer.freeze_encoder(FREEZE_ENCODER_STATE)
 if BALANCE_CLASSIFIER_DATA:
     trainer.balance_data()
