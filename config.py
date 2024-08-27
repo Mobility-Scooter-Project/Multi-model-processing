@@ -38,4 +38,4 @@ CLASSIFIER_EPOCHS = 20
 CLASSIFIER_BATCH_SIZE = 50
 FREEZE_ENCODER_STATE = False
 # NOTE: Loaded model needs to be match defined CLASSIFIER_ENCODER_TYPE
-LOAD_MODEL_PATH = "./models/linear_transformer_e30b32t5l2bt_encoder"
+LOAD_MODEL_PATH = "./models/linear_transformer_e30b32t5l2bt_h8l6_encoder"
