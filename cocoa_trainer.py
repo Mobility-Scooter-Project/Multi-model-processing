@@ -10,11 +10,13 @@ from cocoa_loss import CocoaLoss
 from cocoa_lstm import CocoaLstm
 from cocoa_lstm_transformer import CocoaLstmTransformer
 from cocoa_linear_transformer import CocoaLinearTransformer
+import pandas as pd
+import os
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaTrainer():
-    def __init__(self, encoder_type, seq_len, tau, lam, nhead, nlayer) -> None:
+    def __init__(self, encoder_type, seq_len, tau, lam, nhead, nlayer, logger=None) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
@@ -31,6 +33,7 @@ class CocoaTrainer():
         self.loss_fn = CocoaLoss(tau, lam).to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)
         self.skip_batches = False
+        self.logger = logger
 
     def add_data(self, pose_arr, move_arr, label_arr):
         self.pose_data.add(pose_arr)
@@ -48,6 +51,15 @@ class CocoaTrainer():
 
     def skip_nonneg_batches(self, bool):
         self.skip_batches = bool
+
+    def save_roc_data_to_csv(self, true_labels, pred_probs, model_name, subfolder="roc_data"):
+        if not os.path.exists(subfolder):
+            os.makedirs(subfolder)
+        file_path = os.path.join(subfolder, f'{model_name}_roc_data.csv')
+        data = {'TrueLabels': true_labels, 'PredProbs': pred_probs}
+        df = pd.DataFrame(data)
+        df.to_csv(file_path, index=False)
+        print(f"ROC data saved to {file_path}")
 
     def train(self, epochs, batch_size):
         label_train_dataset, label_test_dataset = \
@@ -110,3 +122,7 @@ class CocoaTrainer():
             train_loss = np.mean(train_losses)
             test_loss = np.mean(test_losses)
             print(f"Epoch {epoch}: train loss {train_loss}, test loss {test_loss}")
+            self.logger.log_training_output(
+                f"Epoch {epoch + 1}: train loss {train_loss:.4f} | test loss {test_loss:.4f}")
+        self.logger.end_logging()
+        # self.save_roc_data_to_csv(all_true_labels, all_pred_probs, "trained_with_20_epochs", subfolder="roc_data")

@@ -1,14 +1,31 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import RANDOM_SEED, SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYER
+from config import RANDOM_SEED, SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYER, EMBEDDING_DIM
 from utils import fetch_data
+from logger import Logger
 
 torch.use_deterministic_algorithms(True)
 torch.manual_seed(RANDOM_SEED)
 torch.cuda.manual_seed_all(RANDOM_SEED)
 
-trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM, N_HEAD, N_LAYER)
+hyperparams = {
+    'ENCODER_TYPE': ENCODER_TYPE,
+    'SEQUENCE_LENGTH': SEQUENCE_LENGTH,
+    'BATCH_SIZE': ENCODER_BATCH_SIZE,
+    'EPOCHS': ENCODER_EPOCHS,
+    'EMBEDDING_DIM': EMBEDDING_DIM,
+    'TAU': TAU,
+    'LAM': LAM,
+    'N_HEAD': N_HEAD,
+    'N_LAYER': N_LAYER
+}
+logger = Logger(log_dir = "encoder_logs")
+
+log_file_path = logger.start_logging(file_name_prefix="encoder")
+logger.log_hyperparameters(hyperparams)
+
+trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM, N_HEAD, N_LAYER, logger)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
