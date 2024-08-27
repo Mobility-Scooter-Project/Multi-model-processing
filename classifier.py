@@ -2,10 +2,14 @@ from sklearn.model_selection import train_test_split
 import torch
 import os
 from utils import fetch_data
-from config import POSE_N_FEATURES, MOVE_N_FEATURES, SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, EMBEDDING_DIM, CLASSIFIER_EPOCHS, BALANCE_CLASSIFIER_DATA, \
+from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, EMBEDDING_DIM, CLASSIFIER_EPOCHS, BALANCE_CLASSIFIER_DATA, \
                    FREEZE_ENCODER_STATE, LOAD_MODEL_PATH, CLASSIFIER_ENCODER_TYPE, N_HEAD, N_LAYER
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 from logger import Logger
+
+torch.use_deterministic_algorithms(True)
+torch.manual_seed(RANDOM_SEED)
+torch.cuda.manual_seed_all(RANDOM_SEED)
 
 hyperparams = {
     'ENCODER_TYPE': CLASSIFIER_ENCODER_TYPE,
@@ -36,7 +40,7 @@ for key in aligned_data.keys():
         patients.add(key[:PATIENT_NAME_IDX])
 print(patients)
 
-for patient in patients:
+for patient in sorted(patients):
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 

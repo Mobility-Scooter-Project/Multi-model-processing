@@ -1,8 +1,12 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYER
+from config import RANDOM_SEED, SEQUENCE_LENGTH, ENCODER_TYPE, TAU, LAM, ENCODER_EPOCHS, ENCODER_BATCH_SIZE, BALANCE_ENCODER_DATA, SAVE_MODEL_PATH, N_HEAD, N_LAYER
 from utils import fetch_data
+
+torch.use_deterministic_algorithms(True)
+torch.manual_seed(RANDOM_SEED)
+torch.cuda.manual_seed_all(RANDOM_SEED)
 
 trainer = CocoaTrainer(ENCODER_TYPE, SEQUENCE_LENGTH, TAU, LAM, N_HEAD, N_LAYER)
 
@@ -20,7 +24,7 @@ for key in aligned_data.keys():
     if key[:DATE_IDX] not in removed_patients:
         patients.add(key[:PATIENT_NAME_IDX])
 
-for patient in patients:
+for patient in sorted(patients):
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
