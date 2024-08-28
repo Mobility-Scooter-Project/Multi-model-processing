@@ -1,0 +1,22 @@
+Logging started at 2024-08-27 17:17:54.834740
+
+Hyperparameters:
+ENCODER_TYPE: $EncoderType.LINEAR_TRANSFORMER - $./models/sq6ed16th3_linear_transformer_e10b50t5l2bt_h8l6_encoder
+SEQUENCE_LENGTH: 6
+EMBEDDING_DIM: 16
+THRESHOLD: 3
+BATCH_SIZE: 50
+EPOCHS: 10
+FREEZE_STATE: True
+Epoch 1: train loss 0.4717 | train acc 0.8316 | test loss 0.4367 | test acc 0.8434
+Epoch 2: train loss 0.4345 | train acc 0.8439 | test loss 0.4358 | test acc 0.8434
+Epoch 3: train loss 0.4336 | train acc 0.8431 | test loss 0.4343 | test acc 0.8434
+Epoch 4: train loss 0.4342 | train acc 0.8421 | test loss 0.4346 | test acc 0.8434
+Epoch 5: train loss 0.4264 | train acc 0.8465 | test loss 0.4336 | test acc 0.8434
+Epoch 6: train loss 0.4302 | train acc 0.8431 | test loss 0.4339 | test acc 0.8434
+Epoch 7: train loss 0.4303 | train acc 0.8426 | test loss 0.4330 | test acc 0.8434
+Epoch 8: train loss 0.4297 | train acc 0.8429 | test loss 0.4316 | test acc 0.8434
+Epoch 9: train loss 0.4267 | train acc 0.8455 | test loss 0.4306 | test acc 0.8434
+Epoch 10: train loss 0.4280 | train acc 0.8423 | test loss 0.4294 | test acc 0.8434
+
+Logging ended at 2024-08-27 17:19:06.182111

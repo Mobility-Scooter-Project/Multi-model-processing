@@ -3,7 +3,7 @@ import torch
 import os
 from utils import fetch_data
 from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, SEQUENCE_LENGTH, CLASSIFIER_BATCH_SIZE, EMBEDDING_DIM, CLASSIFIER_EPOCHS, BALANCE_CLASSIFIER_DATA, \
-                   FREEZE_ENCODER_STATE, LOAD_MODEL_PATH, CLASSIFIER_ENCODER_TYPE, N_HEAD, N_LAYER
+                   FREEZE_ENCODER_STATE, LOAD_MODEL_PATH, CLASSIFIER_ENCODER_TYPE, N_HEAD, N_LAYER, THRESHOLD
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 from logger import Logger
 
@@ -12,8 +12,10 @@ torch.manual_seed(RANDOM_SEED)
 torch.cuda.manual_seed_all(RANDOM_SEED)
 
 hyperparams = {
-    'ENCODER_TYPE': CLASSIFIER_ENCODER_TYPE,
+    'ENCODER_TYPE': f"${CLASSIFIER_ENCODER_TYPE} - ${LOAD_MODEL_PATH}",
     'SEQUENCE_LENGTH': SEQUENCE_LENGTH,
+    'EMBEDDING_DIM': EMBEDDING_DIM,
+    'THRESHOLD': THRESHOLD,
     'BATCH_SIZE': CLASSIFIER_BATCH_SIZE,
     'EPOCHS': CLASSIFIER_EPOCHS,
     'EMBEDDING_DIM': EMBEDDING_DIM,
@@ -44,7 +46,7 @@ for patient in sorted(patients):
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
-# trainer.load_encoder(LOAD_MODEL_PATH)
+trainer.load_encoder(LOAD_MODEL_PATH)
 trainer.freeze_encoder(FREEZE_ENCODER_STATE)
 if BALANCE_CLASSIFIER_DATA:
     trainer.balance_data()

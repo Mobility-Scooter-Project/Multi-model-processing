@@ -1,0 +1,24 @@
+Logging started at 2024-08-27 16:54:19.794457
+
+Hyperparameters:
+ENCODER_TYPE: EncoderType.LSTM - sq6ed16th3_lstm_e10b50t5l2bt_encoder
+SEQUENCE_LENGTH: 6
+BATCH_SIZE: 50
+EPOCHS: 10
+EMBEDDING_DIM: 16
+TAU: 5
+LAM: 2
+N_HEAD: 8
+N_LAYER: 6
+Epoch 1: train loss 6.0755 | test loss 5.6534
+Epoch 2: train loss 5.9215 | test loss 5.8892
+Epoch 3: train loss 5.8853 | test loss 5.8840
+Epoch 4: train loss 5.8826 | test loss 5.8803
+Epoch 5: train loss 5.8400 | test loss 5.3696
+Epoch 6: train loss 5.2759 | test loss 5.1804
+Epoch 7: train loss 5.0649 | test loss 5.0715
+Epoch 8: train loss 5.0174 | test loss 4.9853
+Epoch 9: train loss 5.0107 | test loss 5.0492
+Epoch 10: train loss 5.0046 | test loss 5.0985
+
+Logging ended at 2024-08-27 16:56:11.625845
