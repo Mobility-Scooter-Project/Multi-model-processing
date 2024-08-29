@@ -6,6 +6,10 @@ from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 from logger import Logger
 
+torch.use_deterministic_algorithms(True)
+torch.manual_seed(RANDOM_SEED)
+torch.cuda.manual_seed_all(RANDOM_SEED)
+
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
 EPOCHS = 10
@@ -43,7 +47,7 @@ for key in aligned_data.keys():
         patients.add(key[:PATIENT_NAME_IDX])
 print(patients)
 
-for patient in patients:
+for patient in sorted(patients):
     trainer.add_data(aligned_data[f"{patient}_pose_arr"], aligned_data[f"{patient}_move_arr"], 
                      aligned_data[f"{patient}_label_arr"])
 
