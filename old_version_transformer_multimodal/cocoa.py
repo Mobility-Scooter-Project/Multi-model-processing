@@ -22,7 +22,8 @@ class TransformerEncoder(nn.Module):
         )
         self.transformer_encoder = nn.TransformerEncoder(
             encoder_layer,
-            num_layers=num_layers
+            num_layers=num_layers,
+            enable_nested_tensor=False # Determines if batched tensors are nested
         )
 
     def forward(self, x):
