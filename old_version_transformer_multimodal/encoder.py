@@ -1,12 +1,13 @@
 import torch
 import os
 from cocoa_trainer import CocoaTrainer
-from config import SEQUENCE_LENGTH, RANDOM_SEED
+from config import SEQUENCE_LENGTH, RANDOM_SEED, IS_RANDOM
 from utils import fetch_data
 
-torch.use_deterministic_algorithms(True)
-torch.manual_seed(RANDOM_SEED)
-torch.cuda.manual_seed_all(RANDOM_SEED)
+if not IS_RANDOM:
+    torch.use_deterministic_algorithms(True)
+    torch.manual_seed(RANDOM_SEED)
+    torch.cuda.manual_seed_all(RANDOM_SEED)
 
 TAU = 5
 LAM = 2
@@ -15,7 +16,7 @@ BATCH_SIZE = 50
 BALANCE_DATA = False
 MODEL_PATH = "./models/cocoa_encoder"
 
-trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM)
+trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM, IS_RANDOM)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"

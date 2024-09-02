@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 import numpy as np
-from config import RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, N_HEAD, N_LAYERS, TEST_SIZE
+from config import IS_RANDOM, RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, N_HEAD, N_LAYERS, TEST_SIZE
 from utils import balance_data, find_negatives
 from dataset import multi_sequence_dataset as data
 from cocoa_loss import CocoaLoss
@@ -12,7 +12,7 @@ from cocoa import Cocoa
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class CocoaTrainer():
-    def __init__(self, seq_len, tau, lam) -> None:
+    def __init__(self, seq_len, tau, lam, is_random) -> None:
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
@@ -21,6 +21,7 @@ class CocoaTrainer():
         self.loss_fn = CocoaLoss(tau, lam).to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)
         self.skip_batches = False
+        self.is_random = is_random
 
     def add_data(self, pose_arr, move_arr, label_arr):
         self.pose_data.add(pose_arr)
@@ -39,17 +40,21 @@ class CocoaTrainer():
     def skip_nonneg_batches(self, bool):
         self.skip_batches = bool
 
+    def train_split(self, data):
+        if self.is_random:
+            return train_test_split(data, test_size=TEST_SIZE)
+        else:
+            return train_test_split(data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+
     def train(self, epochs, batch_size):
-        label_train_dataset, label_test_dataset = \
-            train_test_split(self.label_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        label_train_dataset, label_test_dataset = self.train_split(self.label_data)
 
-        pose_train_dataset, pose_test_dataset = \
-            train_test_split(self.pose_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        pose_train_dataset, pose_test_dataset = self.train_split(self.pose_data)
 
-        move_train_dataset, move_test_dataset = \
-            train_test_split(self.move_data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        move_train_dataset, move_test_dataset = self.train_split(self.move_data)
         G = torch.Generator()
-        G.manual_seed(RANDOM_SEED)
+        if not IS_RANDOM:
+            G.manual_seed(RANDOM_SEED)
         train_sampler = RandomSampler(data_source=label_train_dataset, generator=G)
         test_sampler = RandomSampler(data_source=label_test_dataset, generator=G)
         for epoch in range(0, epochs):

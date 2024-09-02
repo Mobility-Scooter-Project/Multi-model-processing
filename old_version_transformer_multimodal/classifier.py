@@ -2,13 +2,14 @@ from sklearn.model_selection import train_test_split
 import torch
 import os
 from utils import fetch_data
-from config import RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
+from config import IS_RANDOM, RANDOM_SEED, POSE_N_FEATURES, MOVE_N_FEATURES, TEST_SIZE
 from cocoa_classifier_trainer import CocoaClassifierTrainer
 from logger import Logger
 
-torch.use_deterministic_algorithms(True)
-torch.manual_seed(RANDOM_SEED)
-torch.cuda.manual_seed_all(RANDOM_SEED)
+if not IS_RANDOM:
+    torch.use_deterministic_algorithms(True)
+    torch.manual_seed(RANDOM_SEED)
+    torch.cuda.manual_seed_all(RANDOM_SEED)
 
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
@@ -30,7 +31,7 @@ logger = Logger()
 log_file_path = logger.start_logging(file_name_prefix="classifier")
 logger.log_hyperparameters(hyperparams)
 
-trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, logger)
+trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, IS_RANDOM, logger)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
