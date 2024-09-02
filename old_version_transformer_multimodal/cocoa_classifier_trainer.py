@@ -5,7 +5,7 @@ from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from cocoa_classifier import CocoaClassifier
 from dataset import multi_sequence_dataset as data
-from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE
+from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM
 from logger import Logger
 from utils import balance_data, find_negatives, get_seq_label
 import pandas as pd
@@ -15,11 +15,11 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 
 
 class CocoaClassifierTrainer():
-    def __init__(self, seq_len, batch_size, x_n_features, y_n_features, embedding_dim=16, logger=None):
+    def __init__(self, seq_len, batch_size, embedding_dim=16, logger=None):
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
-        self.model = CocoaClassifier(seq_len, x_n_features, y_n_features, embedding_dim)
+        self.model = CocoaClassifier(seq_len, x_n_features=POSE_N_FEATURES, y_n_features=MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
         self.model.to(device)
         self.loss_fn = nn.BCELoss().to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)

@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 import numpy as np
-from config import RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, TEST_SIZE
+from config import RANDOM_SEED, LEARNING_RATE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, N_HEAD, N_LAYERS, TEST_SIZE
 from utils import balance_data, find_negatives
 from dataset import multi_sequence_dataset as data
 from cocoa_loss import CocoaLoss
@@ -16,7 +16,7 @@ class CocoaTrainer():
         self.pose_data = data.MultiSequenceDataset(seq_len)
         self.move_data = data.MultiSequenceDataset(seq_len)
         self.label_data = data.MultiSequenceDataset(seq_len)
-        self.model = Cocoa(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, embedding_dim=EMBEDDING_DIM)
+        self.model = Cocoa(seq_len, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, N_HEAD, N_LAYERS)
         self.model.to(device)
         self.loss_fn = CocoaLoss(tau, lam).to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=LEARNING_RATE)
