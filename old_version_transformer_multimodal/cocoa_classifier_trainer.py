@@ -61,10 +61,7 @@ class CocoaClassifierTrainer():
         print(f"ROC data saved to {file_path}")
 
     def train_split(self, data):
-        if self.is_random:
-            return train_test_split(data, test_size=TEST_SIZE)
-        else:
-            return train_test_split(data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        return train_test_split(data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
 
     def train(self, epochs, batch_size):
         label_train_dataset, label_test_dataset = self.train_split(self.label_data)

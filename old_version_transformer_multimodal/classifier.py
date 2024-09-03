@@ -31,7 +31,7 @@ logger = Logger()
 log_file_path = logger.start_logging(file_name_prefix="classifier")
 logger.log_hyperparameters(hyperparams)
 
-trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, IS_RANDOM, logger)
+trainer = CocoaClassifierTrainer(SEQUENCE_LENGTH, BATCH_SIZE, EMBEDDING_DIM, IS_RANDOM, logger)
 
 # Get data
 BASE_DIRECTORY = "aligned_data"
