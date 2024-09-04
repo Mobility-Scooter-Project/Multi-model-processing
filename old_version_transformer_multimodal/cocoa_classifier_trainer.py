@@ -5,7 +5,7 @@ from torch import optim, nn
 from torch.utils.data import DataLoader, RandomSampler
 from cocoa_classifier import CocoaClassifier
 from dataset import multi_sequence_dataset as data
-from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM
+from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, VALIDATION_SIZE
 from logger import Logger
 from utils import balance_data, find_negatives, get_seq_label
 import pandas as pd
@@ -54,22 +54,28 @@ class CocoaClassifierTrainer():
     def save_roc_data_to_csv(self, true_labels, pred_probs, model_name, subfolder="roc_data"):
         if not os.path.exists(subfolder):
             os.makedirs(subfolder)
-        file_path = os.path.join(subfolder, f'{model_name}_roc_data.csv')
+        current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_path = os.path.join(subfolder, f'{model_name}_roc_data_{current_time}.csv')
         data = {'TrueLabels': true_labels, 'PredProbs': pred_probs}
         df = pd.DataFrame(data)
         df.to_csv(file_path, index=False)
         print(f"ROC data saved to {file_path}")
 
     def train_split(self, data):
-        return train_test_split(data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        #training and validation
+        train_val_data, test_data = train_test_split(data, test_size=TEST_SIZE, random_state=RANDOM_SEED)
 
+        # training and testing
+        train_data, val_data = train_test_split(train_val_data, test_size=VALIDATION_SIZE, random_state=RANDOM_SEED)
+
+        return train_data, val_data, test_data
     def train(self, epochs, batch_size):
-        label_train_dataset, label_test_dataset = self.train_split(self.label_data)
+        label_train_dataset, label_val_dataset, label_test_dataset = self.train_split(self.label_data)
 
-        pose_train_dataset, pose_test_dataset = self.train_split(self.pose_data)
+        pose_train_dataset, pose_val_dataset, pose_test_dataset = self.train_split(self.pose_data)
 
-        move_train_dataset, move_test_dataset = self.train_split(self.move_data)
-        
+        move_train_dataset, move_val_dataset, move_test_dataset = self.train_split(self.move_data)
+
         G = torch.Generator()
         if not self.is_random:
             G.manual_seed(RANDOM_SEED)
@@ -101,7 +107,7 @@ class CocoaClassifierTrainer():
                 for pose_true, move_true, label_true in zip(pose_batch, move_batch, label_batch):
                     pose_true, move_true, label_true = pose_true.to(device), move_true.to(device), label_true.to(device)
                     pred = model(pose_true, move_true)
-                    true = torch.tensor(get_seq_label(label_true), dtype=torch.float32)
+                    true = torch.tensor(get_seq_label(label_true), dtype=torch.float32).to(device)
                     loss = self.loss_fn(pred, true)
                     loss.backward()
                     # Parameters are updated on every sample
@@ -123,7 +129,7 @@ class CocoaClassifierTrainer():
                     for pose_true, move_true, label_true in zip(pose_test_batch, move_test_batch, label_test_batch):
                         pose_true, move_true = pose_true.to(device), move_true.to(device)
                         pred = model(pose_true, move_true)
-                        true = torch.tensor(get_seq_label(label_true), dtype=torch.float32)
+                        true = torch.tensor(get_seq_label(label_true), dtype=torch.float32).to(device)
                         loss = self.loss_fn(pred, true)
                         test_accs.append(torch.round(pred[0]) == true[0])
                         test_losses.append(loss.item())
@@ -140,4 +146,46 @@ class CocoaClassifierTrainer():
             self.logger.log_training_output(
                 f"Epoch {epoch + 1}: train loss {train_loss:.4f} | train acc {train_acc:.4f} | test loss {test_loss:.4f} | test acc {test_acc:.4f}")
         self.logger.end_logging()
-        self.save_roc_data_to_csv(all_true_labels, all_pred_probs, "trained_with_20_epochs", subfolder="roc_data")
+
+
+        # Final test
+        test_losses = []
+        test_accs = []
+        all_true_labels = []
+        all_pred_probs = []
+
+        label_test_loader = DataLoader(label_val_dataset, batch_size=batch_size)
+        pose_test_loader = DataLoader(pose_val_dataset, batch_size=batch_size)
+        move_test_loader = DataLoader(move_val_dataset, batch_size=batch_size)
+
+        with torch.no_grad():
+            for label_test_batch, pose_test_batch, move_test_batch in zip(iter(label_test_loader),
+                                                                          iter(pose_test_loader),
+                                                                          iter(move_test_loader)):
+                for pose_true, move_true, label_true in zip(pose_test_batch, move_test_batch, label_test_batch):
+                    pose_true = pose_true.to(device)
+                    move_true = move_true.to(device)
+                    label_true = label_true.to(device)
+
+                    # Model forward pass for both pose and move inputs
+                    pred = self.model(pose_true, move_true)
+
+                    true = torch.tensor(get_seq_label(label_true), dtype=torch.float32).to(device)
+                    loss = self.loss_fn(pred, true)
+                    test_accs.append(torch.round(pred[0]) == true[0])
+                    test_losses.append(loss.item())
+
+                    all_true_labels.append(true.item())
+                    all_pred_probs.append(pred.item())
+
+        final_test_loss = np.mean(test_losses)
+        final_test_acc = np.mean([acc.cpu().numpy() for acc in test_accs])
+        print(f"Final Test Loss: {final_test_loss} | Final Test Accuracy: {final_test_acc}")
+        self.logger.log_training_output(
+            f"Final Test Results: loss {final_test_loss:.4f} | accuracy {final_test_acc:.4f}")
+
+        # Save ROC data from the final test
+        self.save_roc_data_to_csv(all_true_labels, all_pred_probs, "final_test_cocoa_classifier_multimodal",
+                                  subfolder="roc_data")
+
+        self.logger.end_logging()
