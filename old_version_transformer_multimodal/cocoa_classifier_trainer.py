@@ -7,6 +7,7 @@ from cocoa_classifier import CocoaClassifier
 from dataset import multi_sequence_dataset as data
 from config import RANDOM_SEED, LEARNING_RATE, TEST_SIZE, POSE_N_FEATURES, MOVE_N_FEATURES, EMBEDDING_DIM, VALIDATION_SIZE
 from logger import Logger
+from datetime import datetime
 from utils import balance_data, find_negatives, get_seq_label
 import pandas as pd
 import os
