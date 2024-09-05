@@ -1,0 +1,10 @@
+Logging started at 2024-09-05 14:36:30.934214
+
+Hyperparameters:
+ENCODER_TYPE: $EncoderType.LINEAR_TRANSFORMER - $./models/sq6ed16th3_linear_transformer_e10b50t5l2bt_h8l2_encoder
+SEQUENCE_LENGTH: 6
+EMBEDDING_DIM: 16
+THRESHOLD: 3
+BATCH_SIZE: 50
+EPOCHS: 10
+FREEZE_STATE: True

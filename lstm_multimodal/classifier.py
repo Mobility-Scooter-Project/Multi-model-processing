@@ -13,7 +13,7 @@ if not IS_RANDOM:
 
 SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
-EPOCHS = 10
+EPOCHS = 3
 EMBEDDING_DIM = 16
 MODEL_PATH = "./lstm_multimodal/models/cocoa_encoder"
 FREEZE_STATE = False

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from config import THRESHOLD
 
 class CocoaLoss(nn.Module):
     def __init__(self, tau, lam):
@@ -29,7 +30,6 @@ class CocoaLoss(nn.Module):
         return pos_error / len(x_pred_batch)
 
     def __find_negatives(self, label_batch):
-        THRESHOLD = 1
         negatives = []
         for idx, label_seq in enumerate(label_batch):
             i = 0
