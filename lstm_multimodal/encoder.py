@@ -11,9 +11,9 @@ if not IS_RANDOM:
 
 TAU = 5
 LAM = 2
-EPOCHS = 10
+EPOCHS = 3
 BATCH_SIZE = 50
-BALANCE_DATA = False
+BALANCE_DATA = True
 MODEL_PATH = "./lstm_multimodal/models/cocoa_encoder"
 
 trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM, IS_RANDOM)
