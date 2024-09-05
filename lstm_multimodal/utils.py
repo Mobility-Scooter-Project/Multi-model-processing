@@ -4,7 +4,7 @@ import os
 from sequence_dataset import SequenceDataset
 from concatenate_data import process_data_for_patient
 from sklearn.model_selection import train_test_split
-from config import RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
+from config import IS_RANDOM, RANDOM_SEED, TEST_SIZE, DEFLATION_FACTOR, THRESHOLD
 
 def fetch_data(base_directory, all_dates):
     aligned_data = {}
@@ -30,7 +30,8 @@ def fetch_data(base_directory, all_dates):
     return aligned_data
 
 def balance_data(poseSeqs, moveSeqs, labelSeqs):
-    random.seed(RANDOM_SEED)
+    if not IS_RANDOM:
+        random.seed(RANDOM_SEED)
     neg_idxs = find_negatives(labelSeqs)
     pos_idxs = [i for i in range(len(labelSeqs)) if i not in neg_idxs]
     random.shuffle(neg_idxs)
