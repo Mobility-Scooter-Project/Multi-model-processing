@@ -8,7 +8,7 @@ seed = random.randrange(MAX_SEED)
 # General Configuration
 IS_RANDOM = True
 if IS_RANDOM:
-    print(seed)
+    print(f"Random seed: {seed}")
     RANDOM_SEED = seed
 else:
     RANDOM_SEED = 42

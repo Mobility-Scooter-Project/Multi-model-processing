@@ -15,7 +15,7 @@ SEQUENCE_LENGTH = 6
 BATCH_SIZE = 50
 EPOCHS = 3
 EMBEDDING_DIM = 16
-MODEL_PATH = "./models/cocoa_encoder"
+MODEL_PATH = "./old_version_transformer_multimodal/models/cocoa_encoder"
 FREEZE_STATE = False
 BALANCE_DATA = True
 

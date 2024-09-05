@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Logger:
-    def __init__(self, log_dir="logs"):
+    def __init__(self, log_dir="./old_version_transformer_multimodal/logs"):
         self.log_dir = log_dir
         os.makedirs(self.log_dir, exist_ok=True)
         self.log_file = None

@@ -14,7 +14,7 @@ LAM = 2
 EPOCHS = 10
 BATCH_SIZE = 50
 BALANCE_DATA = False
-MODEL_PATH = "./models/cocoa_encoder"
+MODEL_PATH = "./old_version_transformer_multimodal/models/cocoa_encoder"
 
 trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM, IS_RANDOM)
 
