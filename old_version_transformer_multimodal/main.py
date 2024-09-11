@@ -18,7 +18,7 @@ BATCH_SIZE = 50
 BALANCE_DATA = True
 # Classifier train
 FREEZE_STATE = False
-LOAD_ENCODER = False
+LOAD_ENCODER = True
 
 encoder_trainer = CocoaTrainer(SEQUENCE_LENGTH, TAU, LAM, IS_RANDOM)
 
