@@ -58,6 +58,11 @@ def find_negatives(label_batch):
             negatives.append(idx)
     return negatives
 
+def find_positives(label_batch):
+    neg_idxs = find_negatives(label_batch)
+    non_neg_sequences = [seq for i, seq in enumerate(label_batch) if i not in neg_idxs]
+    return non_neg_sequences
+
 def get_seq_label(label_seq):
     unstable_count = 0
     for label in label_seq:

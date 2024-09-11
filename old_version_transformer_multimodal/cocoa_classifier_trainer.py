@@ -36,6 +36,9 @@ class CocoaClassifierTrainer():
 
     def load_encoder(self, PATH):
         self.model.load_encoder(PATH)
+    
+    def set_encoder(self, encoder):
+        self.model.cocoa = encoder
 
     def freeze_encoder(self, state):
         self.model.freeze_encoder(state)
