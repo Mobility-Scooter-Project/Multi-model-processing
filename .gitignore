@@ -3,3 +3,5 @@ test/
 .venv
 cocoa_train_indep.py
 test_random.py
+*.txt
+*.csv
